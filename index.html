@@ -4,22 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Laura Alcantara · UGC Creator Portfolio</title>
-<meta name="description" content="Laura Alcantara, UGC creator based in Brazil. Videos and photos for beauty, food, home decor and travel brands, with a human touch.">
+<meta name="description" content="Laura Alcantara, bilingual UGC creator. Hotel stay collabs in Europe, March 2027, and UGC videos in English and Portuguese for brands of any kind.">
 <link rel="alternate" hreflang="pt-BR" href="https://lauragalc.github.io/lauragalcugc/">
 <link rel="alternate" hreflang="en" href="https://lauragalc.github.io/lauragalcugc-en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  /* ============ BASE DO JORNAL ============ */
+  /* ============ NEWSPAPER BASE · PASTEL GREEN PALETTE ============ */
   :root {
-    --papel: #efece4;
-    --papel-escuro: #e3dfd3;
-    --tinta: #111111;
-    --tinta-suave: #3a3a3a;
-    --vermelho: #c0392b;
-    --vermelho-escuro: #a12f23;
-    --fio: #111111;
+    --papel: #eef3ea;          /* page background, light sage */
+    --card: #f7faf5;           /* cards and form fields */
+    --tinta: #1f2b24;          /* main text, near black green */
+    --tinta-suave: #4c5c52;    /* secondary text */
+    --destaque: #4f7a5f;       /* accent: large headings, borders, button background */
+    --destaque-escuro: #3d624b;/* accent for small text and button hover (better contrast) */
+    --menta: #cfe3d4;
+    --salvia: #a9c4b0;
+    --rosa: #f2d8cf;
+    --manteiga: #f3ebcf;
+    --fio: #1f2b24;
     --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
     --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
     --largura: 1180px;
@@ -34,8 +38,8 @@
     line-height: 1.6;
     color: var(--tinta);
     background-color: var(--papel);
-    /* textura de meio-tom do papel de jornal */
-    background-image: radial-gradient(rgba(0,0,0,.07) 0.8px, transparent 1.1px);
+    /* halftone newsprint texture */
+    background-image: radial-gradient(rgba(31,43,36,.07) 0.8px, transparent 1.1px);
     background-size: 4px 4px;
     overflow-x: hidden;
   }
@@ -44,23 +48,22 @@
   h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; line-height: 1.1; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
   p { margin: 0 0 1em; }
   .container { width: 100%; max-width: var(--largura); margin: 0 auto; padding: 0 20px; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-  :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--destaque-escuro); outline-offset: 3px; }
   .pular {
     position: absolute; left: 12px; top: -60px; z-index: 300;
     background: var(--tinta); color: var(--papel); padding: 10px 16px; font-weight: 700; text-decoration: none;
   }
   .pular:focus { top: 12px; }
 
-  /* filete duplo, a assinatura do jornal */
+  /* double rule, the newspaper signature */
   .filete-duplo { border: 0; border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio); height: 7px; margin: 0; }
 
-  /* ============ CABEÇALHO FIXO ============ */
+  /* ============ FIXED HEADER ============ */
   .topo {
     position: fixed; inset: 0 0 auto 0; z-index: 100;
     background-color: var(--papel);
-    background-image: radial-gradient(rgba(0,0,0,.07) 0.8px, transparent 1.1px);
+    background-image: radial-gradient(rgba(31,43,36,.07) 0.8px, transparent 1.1px);
     background-size: 4px 4px;
   }
   .topo-edicao {
@@ -68,18 +71,20 @@
     font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
     padding: 7px 0 5px; color: var(--tinta-suave);
   }
-  .topo-edicao span:last-child { color: var(--vermelho); }
+  .topo-edicao span:last-child { color: var(--destaque-escuro); }
   .topo-nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 0; }
   .marca-nome {
     font-family: var(--serif); font-weight: 700; font-size: 22px; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap;
   }
-  .marca-nome em { color: var(--vermelho); font-style: normal; }
-  .menu { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .marca-nome em { color: var(--destaque-escuro); font-style: normal; }
+  .menu { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; align-items: center; }
   .menu a {
     display: block; padding: 6px 10px; text-decoration: none; font-size: 13px; font-weight: 600;
     text-transform: uppercase; letter-spacing: .1em; border-bottom: 2px solid transparent;
   }
-  .menu a:hover { border-bottom-color: var(--vermelho); color: var(--vermelho); }
+  .menu a:hover { border-bottom-color: var(--destaque-escuro); color: var(--destaque-escuro); }
+  .menu a.idioma { border: 2px solid var(--tinta); margin-left: 8px; }
+  .menu a.idioma:hover { background: var(--tinta); color: var(--papel); }
   .botao-menu {
     display: none; background: none; border: 2px solid var(--tinta); padding: 8px 10px; cursor: pointer;
     font: 700 12px var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--tinta);
@@ -95,238 +100,254 @@
   .botao-menu[aria-expanded="true"] .barras::before { transform: translateY(6px) rotate(45deg); }
   .botao-menu[aria-expanded="true"] .barras::after { transform: translateY(-6px) rotate(-45deg); }
 
-  /* ============ BOTÕES ============ */
+  /* ============ BUTTONS ============ */
   .botao {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 14px 24px; font: 700 14px var(--sans); letter-spacing: .1em; text-transform: uppercase;
     text-decoration: none; border: 2px solid var(--tinta); cursor: pointer; transition: transform .15s, background .2s, color .2s;
   }
-  .botao-primario { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
-  .botao-primario:hover { background: var(--vermelho-escuro); border-color: var(--vermelho-escuro); }
+  .botao-primario { background: var(--destaque); border-color: var(--destaque-escuro); color: #fff; }
+  .botao-primario:hover { background: var(--destaque-escuro); border-color: var(--destaque-escuro); }
   .botao-secundario { background: transparent; color: var(--tinta); }
   .botao-secundario:hover { background: var(--tinta); color: var(--papel); }
   .botao:active { transform: translateY(1px); }
 
-  /* ============ BLOCOS DE FOTO E VÍDEO (placeholders) ============ */
+  /* ============ PHOTO AND VIDEO BLOCKS (placeholders) ============ */
   .foto {
-    position: relative; width: 100%; overflow: hidden; background: #888;
+    position: relative; width: 100%; overflow: hidden;
     background-image:
-      radial-gradient(rgba(0,0,0,.28) 1px, transparent 1.4px),
-      linear-gradient(160deg, #d9d6cc 0%, #8f8b82 45%, #3b3936 100%);
+      radial-gradient(rgba(31,43,36,.22) 1px, transparent 1.4px),
+      linear-gradient(160deg, var(--menta) 0%, var(--salvia) 50%, var(--destaque) 100%);
     background-size: 5px 5px, 100% 100%;
-    /* preto e branco de verdade: vale para o bloco e para a imagem real */
-    filter: grayscale(1) contrast(1.15);
   }
-  .foto img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25); }
+  /* soft green duotone: the real photo turns black and white, then gets a sage tint on top */
+  .foto img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); }
+  .foto::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: var(--salvia); mix-blend-mode: multiply; opacity: .35;
+  }
   .foto-legenda-formato {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    background: rgba(239,236,228,.92); color: var(--tinta); padding: 6px 12px;
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
+    background: var(--card); color: var(--tinta); padding: 6px 12px;
     font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; border: 1px solid var(--tinta);
   }
   .r-4x5 { aspect-ratio: 4 / 5; }
   .r-9x16 { aspect-ratio: 9 / 16; }
-  .r-1x1 { aspect-ratio: 1 / 1; }
   figcaption.credito {
     font-size: 12px; color: var(--tinta-suave); padding-top: 8px; border-top: 1px solid var(--fio); margin-top: 8px; font-style: italic; font-family: var(--serif);
   }
 
-  /* ============ SEÇÕES ============ */
+  /* ============ SECTIONS ============ */
   section { padding: 72px 0; }
   .secao-cabeca { text-align: center; margin-bottom: 44px; }
   .chapeu {
     display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--vermelho); margin-bottom: 12px;
+    color: var(--destaque-escuro); margin-bottom: 12px;
   }
   .secao-cabeca h2 { font-size: clamp(30px, 5vw, 54px); }
   .secao-cabeca .linha-fina { max-width: 640px; margin: 14px auto 0; color: var(--tinta-suave); font-family: var(--serif); font-style: italic; }
 
-  /* ============ 1. CAPA ============ */
-  .capa { padding-top: calc(var(--topo) + 28px); padding-bottom: 0; }
+  /* ============ 1. COVER ============ */
+  .capa { padding-top: calc(var(--topo) + 28px); }
   .capa-manchete-topo {
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; padding-bottom: 10px; border-bottom: 1px solid var(--fio); margin-bottom: 26px;
   }
-  .capa-manchete-topo .exclusivo { background: var(--vermelho); color: #fff; padding: 2px 8px; }
+  .capa-manchete-topo .exclusivo { background: var(--destaque-escuro); color: #fff; padding: 2px 8px; }
   .capa-grade { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: start; }
-  /* o nome se ajusta à largura da coluna para "ALCANTARA" caber numa linha só */
+  /* the name scales with the column so "ALCANTARA" stays on one line */
   .capa-texto { container-type: inline-size; min-width: 0; }
-  .capa h1 {
-    font-size: clamp(34px, 6.6vw, 88px); line-height: .95; letter-spacing: -.01em; white-space: nowrap;
-  }
+  .capa h1 { font-size: clamp(34px, 6.6vw, 88px); line-height: .95; letter-spacing: -.01em; white-space: nowrap; }
   @supports (font-size: 1cqi) { .capa h1 { font-size: min(13cqi, 120px); } }
-  .capa h1 .linha2 { color: var(--vermelho); display: block; }
-
-  /* troca de idioma no menu */
-  .menu a.idioma { border: 2px solid var(--tinta); margin-left: 8px; }
-  .menu a.idioma:hover { background: var(--tinta); color: var(--papel); border-bottom-color: var(--tinta); }
+  .capa h1 .linha2 { color: var(--destaque-escuro); display: block; }
   .capa-frase {
     font-family: var(--serif); font-size: clamp(19px, 2.3vw, 26px); line-height: 1.4; margin: 26px 0 30px;
     padding: 16px 0; border-top: 1px solid var(--fio); border-bottom: 1px solid var(--fio);
   }
-  .capa-botoes { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
-  .capa-numeros { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio); }
-  .capa-numeros div { padding: 14px 12px; border-right: 1px solid var(--fio); }
-  .capa-numeros div:last-child { border-right: 0; }
-  .capa-numeros strong { display: block; font-family: var(--serif); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; }
-  .capa-numeros span { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--tinta-suave); }
-
-  .faixa-marcas {
-    margin-top: 56px; border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio);
-    overflow: hidden; white-space: nowrap; padding: 10px 0; background: var(--tinta); color: var(--papel);
+  .capa-botoes { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px; }
+  .capa-aviso {
+    border: 2px solid var(--tinta); background: var(--manteiga); padding: 14px 18px;
+    display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap;
   }
-  .faixa-marcas-trilho { display: inline-flex; animation: rolar 38s linear infinite; }
-  .faixa-marcas-trilho span {
-    font-family: var(--serif); text-transform: uppercase; font-size: 15px; letter-spacing: .14em; padding: 0 22px;
-  }
-  .faixa-marcas-trilho span::after { content: "✦"; color: var(--vermelho); margin-left: 44px; font-size: 11px; vertical-align: middle; }
-  @keyframes rolar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .capa-aviso b { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--destaque-escuro); }
+  .capa-aviso span { font-family: var(--serif); font-size: 16px; }
+  .capa-aviso a { font-weight: 700; color: var(--destaque-escuro); }
 
-  /* ============ 2. SOBRE ============ */
+  /* ============ 2. ABOUT ============ */
   .sobre-grade { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
   .sobre-texto { column-count: 2; column-gap: 36px; column-rule: 1px solid var(--fio); }
   .sobre-texto p:first-child::first-letter {
-    float: left; font-family: var(--serif); font-weight: 700; font-size: 74px; line-height: .8; padding: 6px 10px 0 0; color: var(--vermelho);
+    float: left; font-family: var(--serif); font-weight: 700; font-size: 74px; line-height: .8; padding: 6px 10px 0 0; color: var(--destaque-escuro);
   }
   .promessas { list-style: none; margin: 28px 0 0; padding: 0; border-top: 3px solid var(--fio); }
   .promessas li {
     display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--fio);
     font-weight: 600;
   }
-  .promessas li b { font-family: var(--serif); color: var(--vermelho); font-size: 22px; }
+  .promessas li b { font-family: var(--serif); color: var(--destaque-escuro); font-size: 22px; }
   .assinatura { margin-top: 26px; font-family: var(--serif); font-style: italic; font-size: 28px; }
   .assinatura small { display: block; font-family: var(--sans); font-style: normal; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); }
 
-  /* ============ 3. DESTAQUES ============ */
+  /* ============ 3. HOTEL STAY COLLAB ============ */
+  .hotel { background: var(--menta); background-image: radial-gradient(rgba(31,43,36,.06) 0.8px, transparent 1.1px); background-size: 4px 4px; }
+  .hotel-grade { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: start; }
+  .hotel-intro p { font-family: var(--serif); font-size: 19px; line-height: 1.6; }
+  .hotel-intro .destaque-bilingue {
+    margin-top: 22px; padding: 18px 20px; background: var(--rosa); border-left: 6px solid var(--destaque);
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+  }
+  .hotel-intro .destaque-bilingue strong { display: block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--destaque-escuro); margin-bottom: 4px; }
+  .proposta { background: var(--card); border: 3px double var(--tinta); outline: 1px solid var(--tinta); outline-offset: 4px; padding: 26px 26px 18px; }
+  .proposta-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; border-bottom: 3px solid var(--fio); padding-bottom: 12px; margin-bottom: 4px; }
+  .proposta-topo h3 { font-size: 22px; }
+  .proposta-topo span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--destaque-escuro); }
+  .proposta h4 { font-family: var(--sans); font-size: 12px; letter-spacing: .16em; color: var(--tinta-suave); margin: 18px 0 6px; }
+  .proposta ul { list-style: none; margin: 0; padding: 0; }
+  .proposta li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 9px 0; border-bottom: 1px solid rgba(31,43,36,.25); }
+  .proposta li:last-child { border-bottom: 0; }
+  .proposta li::before { content: "✦"; color: var(--destaque-escuro); font-size: 13px; line-height: 1.9; }
+
+  .cidades-cabeca { margin: 60px 0 22px; display: flex; align-items: center; gap: 16px; font-family: var(--serif); text-transform: uppercase; font-size: clamp(18px, 2.4vw, 24px); }
+  .cidades-cabeca::before, .cidades-cabeca::after { content: ""; flex: 1; border-top: 1px solid var(--fio); }
+  .cidades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .cidade { border: 2px solid var(--tinta); padding: 22px; text-align: center; }
+  .cidade:nth-child(3n+1) { background: var(--card); }
+  .cidade:nth-child(3n+2) { background: var(--rosa); }
+  .cidade:nth-child(3n+3) { background: var(--manteiga); }
+  .cidade-mes { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--tinta-suave); }
+  .cidade h3 { font-size: clamp(24px, 3vw, 32px); margin: 6px 0 8px; }
+  .cidade-noites { font-family: var(--serif); font-style: italic; }
+  .hotel-cta { text-align: center; margin-top: 34px; }
+
+  /* ============ 4. HIGHLIGHTS ============ */
   .destaques-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .destaque {
     display: flex; flex-direction: column; text-decoration: none; color: inherit;
     border-top: 3px solid var(--fio); padding-top: 14px; transition: transform .2s;
   }
   .destaque:hover { transform: translateY(-4px); }
-  .destaque:hover .play { background: var(--vermelho); }
+  .destaque:hover .play { background: var(--destaque-escuro); }
   .destaque .foto { margin-bottom: 16px; }
   .play {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
     width: 74px; height: 74px; border-radius: 50%; background: var(--tinta); display: grid; place-items: center;
-    border: 3px solid var(--papel); transition: background .2s;
+    border: 3px solid var(--card); transition: background .2s;
   }
   .play::after { content: ""; border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent #fff; margin-left: 5px; }
-  .destaque .foto-legenda-formato { top: auto; bottom: 14px; }
-  .destaque-numero { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 4.5vw, 54px); line-height: 1; color: var(--vermelho); }
-  .destaque-rotulo { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin: 6px 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--fio); }
-  .destaque h3 { font-size: 20px; margin-bottom: 6px; }
+  .destaque .foto-legenda-formato { top: auto; bottom: 14px; transform: translateX(-50%); }
+  .destaque-tipo { font-family: var(--serif); font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; color: var(--destaque-escuro); padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--fio); }
+  .destaque h3 { font-size: 18px; margin-bottom: 6px; }
   .destaque p { color: var(--tinta-suave); font-size: 15px; margin: 0; }
 
-  /* ============ 4. TRABALHOS ============ */
+  /* ============ 5. WORK ============ */
   .filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px; }
   .filtro {
     background: transparent; border: 2px solid var(--tinta); color: var(--tinta); padding: 9px 16px; cursor: pointer;
     font: 700 13px var(--sans); letter-spacing: .1em; text-transform: uppercase; transition: background .2s, color .2s;
   }
-  .filtro:hover { background: var(--papel-escuro); }
+  .filtro:hover { background: var(--menta); }
   .filtro[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
   .trabalhos-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .trabalho { border-top: 1px solid var(--fio); padding-top: 12px; animation: aparecer .4s ease both; }
   .trabalho[hidden] { display: none; }
   .trabalho .foto { margin-bottom: 12px; }
-  .trabalho-nicho { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--vermelho); }
+  .trabalho-nicho { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--destaque-escuro); }
   .trabalho h3 { font-size: 17px; margin: 4px 0; }
   .trabalho p { font-size: 14px; color: var(--tinta-suave); margin: 0; }
   @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   .trabalhos-vazio { text-align: center; font-style: italic; font-family: var(--serif); }
 
-  /* ============ 5. SERVIÇOS ============ */
+  /* ============ 6. SERVICES ============ */
   .servicos-grade { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 3px solid var(--fio); }
-  .servico { padding: 28px 26px 30px; border-bottom: 1px solid var(--fio); border-right: 1px solid var(--fio); }
+  .servico { padding: 28px 26px 30px; border-bottom: 1px solid var(--fio); border-right: 1px solid var(--fio); display: flex; flex-direction: column; }
   .servico:nth-child(3n) { border-right: 0; }
-  .servico-num { font-family: var(--serif); font-size: 46px; font-weight: 700; color: var(--vermelho); line-height: 1; }
+  .servico-num { font-family: var(--serif); font-size: 46px; font-weight: 700; color: var(--destaque-escuro); line-height: 1; }
   .servico h3 { font-size: 20px; margin: 14px 0 10px; }
-  .servico p { margin: 0; color: var(--tinta-suave); font-size: 15px; }
-
-  /* ============ 6. NÚMEROS E DEPOIMENTOS ============ */
-  .metricas { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 3px solid var(--fio); border-bottom: 3px solid var(--fio); background: var(--tinta); color: var(--papel); }
-  .metrica { padding: 30px 18px; text-align: center; border-right: 1px solid rgba(239,236,228,.45); }
-  .metrica:last-child { border-right: 0; }
-  .metrica strong { display: block; font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); line-height: 1; }
-  .metrica span { display: block; margin-top: 10px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
-  .subtitulo-secao {
-    font-family: var(--serif); text-transform: uppercase; font-size: 15px; letter-spacing: .16em; text-align: center;
-    margin: 56px 0 24px; display: flex; align-items: center; gap: 16px;
+  .servico p { margin: 0 0 16px; color: var(--tinta-suave); font-size: 15px; }
+  .servico-preco {
+    margin-top: auto; align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    background: var(--manteiga); border: 1px solid var(--tinta); padding: 4px 10px;
   }
-  .subtitulo-secao::before, .subtitulo-secao::after { content: ""; flex: 1; border-top: 1px solid var(--fio); }
-  .resultados-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .resultado { border: 2px solid var(--tinta); padding: 24px; background: var(--papel); }
-  .resultado strong { display: block; font-family: var(--serif); font-size: 44px; color: var(--vermelho); line-height: 1; }
-  .resultado .r-rotulo { font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; margin: 8px 0 12px; }
-  .resultado p { margin: 0; color: var(--tinta-suave); font-size: 15px; }
-  .depoimentos-grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 3px solid var(--fio); }
-  .depoimento { margin: 0; padding: 28px; border-bottom: 1px solid var(--fio); }
-  .depoimento:nth-child(odd) { border-right: 1px solid var(--fio); }
-  .depoimento blockquote { margin: 0 0 14px; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.55; }
-  .depoimento blockquote::before { content: "“"; color: var(--vermelho); font-size: 48px; line-height: 0; vertical-align: -18px; margin-right: 4px; font-style: normal; }
-  .depoimento figcaption { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-  .depoimento figcaption span { color: var(--tinta-suave); font-weight: 500; }
 
-  /* ============ 7. CONTATO ============ */
+  /* ============ 7. WHAT YOU GET ============ */
+  .entregas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 48px; border-top: 3px solid var(--fio); }
+  .entregas li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--fio); font-size: 17px; }
+  .entregas li::before {
+    content: "✓"; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--destaque-escuro); color: #fff; font-size: 14px; font-weight: 700;
+  }
+
+  /* ============ 8. HOW I WORK ============ */
+  .como-trabalho { background: var(--tinta); color: var(--papel); padding: 56px 0; }
+  .como-trabalho .chapeu { color: var(--menta); }
+  .como-trabalho .secao-cabeca { margin-bottom: 32px; }
+  .passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(238,243,234,.5); border-bottom: 1px solid rgba(238,243,234,.5); }
+  .passo { padding: 26px 22px; border-right: 1px solid rgba(238,243,234,.5); }
+  .passo:last-child { border-right: 0; }
+  .passo-num { font-family: var(--serif); font-size: 44px; font-weight: 700; line-height: 1; color: var(--menta); }
+  .passo h3 { font-size: 19px; margin: 12px 0 8px; }
+  .passo p { margin: 0; font-size: 15px; color: #d6e2d8; }
+  .como-trabalho :focus-visible { outline-color: var(--menta); }
+
+  /* ============ 9. CONTACT ============ */
   .contato-grade { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
   .formulario { border-top: 3px solid var(--fio); padding-top: 20px; }
   .campo { margin-bottom: 18px; }
   .campo label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
   .campo input, .campo textarea {
-    width: 100%; font: 400 16px var(--sans); color: var(--tinta); background: #f7f5ef;
+    width: 100%; font: 400 16px var(--sans); color: var(--tinta); background: var(--card);
     border: 0; border-bottom: 2px solid var(--tinta); padding: 12px; border-radius: 0;
   }
   .campo textarea { min-height: 140px; resize: vertical; }
-  .campo input:focus-visible, .campo textarea:focus-visible { outline: 3px solid var(--vermelho); outline-offset: 0; }
-  .confirmacao {
-    border: 2px solid var(--tinta); padding: 22px; background: #f7f5ef; margin-top: 4px;
-  }
-  .confirmacao h3 { color: var(--vermelho); font-size: 22px; margin-bottom: 8px; }
+  .campo input:focus-visible, .campo textarea:focus-visible { outline: 3px solid var(--destaque-escuro); outline-offset: 0; }
+  .erro { color: #8a2f22; font-weight: 600; margin: 0 0 12px; }
+  .confirmacao { border: 2px solid var(--tinta); padding: 22px; background: var(--card); margin-top: 4px; }
+  .confirmacao h3 { color: var(--destaque-escuro); font-size: 22px; margin-bottom: 8px; }
   .canais { border-top: 3px solid var(--fio); padding-top: 20px; }
   .canais p { font-family: var(--serif); font-style: italic; }
   .canal {
     display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--fio);
     text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 14px;
   }
-  .canal span:last-child { font-family: var(--sans); text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--tinta-suave); overflow-wrap: anywhere; text-align: right; }
-  .canal:hover span:first-child { color: var(--vermelho); }
+  .canal span:last-child { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--tinta-suave); overflow-wrap: anywhere; text-align: right; }
+  .canal:hover span:first-child { color: var(--destaque-escuro); }
 
-  /* ============ 8. RODAPÉ ============ */
+  /* ============ FOOTER ============ */
   .rodape { padding: 36px 0 40px; background: var(--tinta); color: var(--papel); }
   .rodape-grade { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
   .rodape .marca-nome { color: var(--papel); }
   .rodape-redes { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; }
   .rodape-redes a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
-  .rodape-redes a:hover { color: #ff8a7d; }
+  .rodape-redes a:hover { color: var(--menta); }
   .rodape small { font-size: 13px; opacity: .85; }
-  .rodape :focus-visible { outline-color: #ff8a7d; }
+  .rodape :focus-visible { outline-color: var(--menta); }
 
-  /* ============ CARD DE CAPTURA ============ */
+  /* ============ MEDIA KIT CARD ============ */
   .captura-fundo {
-    position: fixed; inset: 0; z-index: 200; background: rgba(17,17,17,.72);
+    position: fixed; inset: 0; z-index: 200; background: rgba(31,43,36,.72);
     display: grid; place-items: center; padding: 16px; opacity: 0; transition: opacity .3s;
   }
   .captura-fundo.aberto { opacity: 1; }
   .captura-fundo[hidden] { display: none; }
   .captura {
     position: relative; width: 100%; max-width: 440px; background: var(--papel); border: 3px solid var(--tinta);
-    padding: 32px 26px 26px; box-shadow: 10px 10px 0 var(--vermelho); max-height: calc(100vh - 32px); overflow-y: auto;
+    padding: 32px 26px 26px; box-shadow: 10px 10px 0 var(--salvia); max-height: calc(100vh - 32px); overflow-y: auto;
   }
   .captura .chapeu { margin-bottom: 6px; }
   .captura h2 { font-size: 26px; margin-bottom: 10px; }
-  .captura > p { color: var(--tinta-suave); font-size: 15px; }
+  .captura > p, .captura #captura-conteudo > p { color: var(--tinta-suave); font-size: 15px; }
   .captura-fechar {
     position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; background: none; border: 0; cursor: pointer;
     font-size: 28px; line-height: 1; color: var(--tinta);
   }
-  .captura-fechar:hover { color: var(--vermelho); }
+  .captura-fechar:hover { color: var(--destaque-escuro); }
   .captura .botao { width: 100%; }
 
-  /* ============ ANIMAÇÃO DE ENTRADA ============ */
+  /* ============ SCROLL REVEAL ============ */
   .revelar { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .revelar.visivel { opacity: 1; transform: none; }
 
-  /* ============ RESPONSIVO ============ */
+  /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
     .menu a { padding: 6px 7px; font-size: 12px; letter-spacing: .06em; }
     .trabalhos-grade { grid-template-columns: repeat(3, 1fr); }
@@ -336,24 +357,24 @@
     .botao-menu { display: inline-flex; }
     .menu {
       display: none; position: absolute; left: 0; right: 0; top: 100%;
-      flex-direction: column; gap: 0; background: var(--papel); border-top: 1px solid var(--fio); border-bottom: 3px solid var(--fio);
+      flex-direction: column; align-items: stretch; gap: 0; background: var(--papel); border-top: 1px solid var(--fio); border-bottom: 3px solid var(--fio);
       padding: 6px 20px 14px;
     }
     .menu.aberto { display: flex; }
-    .menu a { padding: 14px 4px; font-size: 15px; border-bottom: 1px solid rgba(17,17,17,.2); }
+    .menu a { padding: 14px 4px; font-size: 15px; border-bottom: 1px solid rgba(31,43,36,.2); }
+    .menu a.idioma { margin: 10px 0 0; text-align: center; }
     .topo-nav { position: relative; }
-    .capa-grade, .sobre-grade, .contato-grade { grid-template-columns: 1fr; gap: 32px; }
-    .capa-foto { max-width: 420px; }
-    .sobre-foto { max-width: 420px; }
+    .capa-grade, .sobre-grade, .contato-grade, .hotel-grade { grid-template-columns: 1fr; gap: 32px; }
+    .capa-foto, .sobre-foto { max-width: 420px; }
     .destaques-grade { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 44px; }
     .servicos-grade { grid-template-columns: repeat(2, 1fr); }
     .servico:nth-child(3n) { border-right: 1px solid var(--fio); }
     .servico:nth-child(2n) { border-right: 0; }
-    .metricas { grid-template-columns: repeat(2, 1fr); }
-    .metrica:nth-child(2) { border-right: 0; }
-    .metrica:nth-child(-n+2) { border-bottom: 1px solid rgba(239,236,228,.45); }
-    .resultados-grade { grid-template-columns: 1fr; }
     .trabalhos-grade { grid-template-columns: repeat(2, 1fr); }
+    .passos { grid-template-columns: repeat(2, 1fr); }
+    .passo:nth-child(2) { border-right: 0; }
+    .passo:nth-child(-n+2) { border-bottom: 1px solid rgba(238,243,234,.5); }
+    .entregas { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     body { font-size: 16px; }
@@ -362,14 +383,14 @@
     .topo-edicao span.esconde-celular { display: none; }
     .marca-nome { font-size: 18px; }
     .sobre-texto { column-count: 1; }
-    .capa-numeros div { padding: 12px 8px; }
-    .capa-numeros span { font-size: 10px; letter-spacing: .06em; }
-    .capa-botoes .botao { flex: 1 1 100%; }
+    .capa-botoes .botao, .hotel-cta .botao { flex: 1 1 100%; width: 100%; }
     .servicos-grade { grid-template-columns: 1fr; }
     .servico { border-right: 0 !important; }
-    .depoimentos-grade { grid-template-columns: 1fr; }
-    .depoimento:nth-child(odd) { border-right: 0; }
-    .depoimento { padding: 24px 0; }
+    .cidades { grid-template-columns: 1fr; }
+    .proposta { padding: 22px 18px 14px; }
+    .passos { grid-template-columns: 1fr; }
+    .passo { border-right: 0; border-bottom: 1px solid rgba(238,243,234,.5); }
+    .passo:last-child { border-bottom: 0; }
     .trabalhos-grade { gap: 16px; }
     .trabalho h3 { font-size: 15px; }
   }
@@ -377,14 +398,11 @@
     .trabalhos-grade { grid-template-columns: 1fr; }
   }
 
-  /* ============ MOVIMENTO REDUZIDO ============ */
+  /* ============ REDUCED MOTION ============ */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .revelar { opacity: 1; transform: none; }
-    .faixa-marcas { white-space: normal; }
-    .faixa-marcas-trilho { flex-wrap: wrap; justify-content: center; display: flex; }
-    .faixa-marcas-trilho span[aria-hidden="true"] { display: none; }
   }
 </style>
 </head>
@@ -397,7 +415,7 @@
   <div class="container">
     <div class="topo-edicao">
       <span>Daily edition · Vol. I No. 001 · Limeira, Brazil</span>
-      <span class="esconde-celular">UGC Section</span>
+      <span class="esconde-celular">Europe edition · March 2027</span>
     </div>
   </div>
   <hr class="filete-duplo">
@@ -409,10 +427,10 @@
       </button>
       <ul class="menu" id="menu-principal">
         <li><a href="#sobre">About</a></li>
+        <li><a href="#hotel">Hotel collab</a></li>
         <li><a href="#destaques">Highlights</a></li>
         <li><a href="#trabalhos">Work</a></li>
         <li><a href="#servicos">Services</a></li>
-        <li><a href="#numeros">Numbers</a></li>
         <li><a href="#contato">Contact</a></li>
         <!-- link to the Portuguese version -->
         <li><a class="idioma" href="https://lauragalc.github.io/lauragalcugc/" hreflang="pt-BR" lang="pt-BR" aria-label="Ver em português">PT</a></li>
@@ -429,7 +447,7 @@
     <div class="container">
       <div class="capa-manchete-topo">
         <span class="exclusivo">Exclusive</span>
-        <span>UGC Creator · Beauty · Food · Home decor · Travel</span>
+        <span>Bilingual UGC Creator · English · Portuguese</span>
       </div>
       <div class="capa-grade">
         <div class="capa-texto">
@@ -439,8 +457,10 @@
             <a class="botao botao-primario" href="#contato">Let's talk</a>
             <a class="botao botao-secundario" href="#destaques">See my work</a>
           </div>
-          <!-- the three cover numbers come from the NUMEROS_CAPA array in the script -->
-          <div class="capa-numeros" id="capa-numeros"></div>
+          <p class="capa-aviso">
+            <b>Now booking</b>
+            <span>Hotel stay collabs in Budapest, Prague and Vienna, March 2027. <a href="#hotel">See the collab</a></span>
+          </p>
         </div>
         <figure class="capa-foto revelar" style="margin:0">
           <!-- COVER PHOTO: to use your photo, replace the div below with
@@ -448,13 +468,9 @@
           <div class="foto r-4x5" role="img" aria-label="Placeholder for a photo of creator Laura Alcantara">
             <span class="foto-legenda-formato">creator photo 4:5</span>
           </div>
-          <figcaption class="credito">Laura Alcantara, UGC creator, in Limeira, Brazil.</figcaption>
+          <figcaption class="credito">Laura Alcantara, bilingual UGC creator.</figcaption>
         </figure>
       </div>
-    </div>
-    <!-- brand strip: edit the MARCAS array in the script -->
-    <div class="faixa-marcas" aria-label="Brands I have worked with">
-      <div class="faixa-marcas-trilho" id="faixa-marcas"></div>
     </div>
   </section>
 
@@ -479,7 +495,8 @@
         <div class="revelar">
           <div class="sobre-texto">
             <p>Hi, I'm Laura! I live in Limeira, Brazil, and I spend my days turning products into stories people want to watch until the very end. I believe the best content is the kind that feels real, because it is real: real people using, feeling and sharing what they think.</p>
-            <p>I work with beauty, food, home decor and travel, and I have created content for hotels that wanted to show what it feels like to stay with them. My approach is simple: I get to know your brand, write a script that sounds human and film every detail with care.</p>
+            <p>I work with beauty, food, home decor and travel, and I have created content for hotels that wanted to show what it feels like to stay with them. I also work with brands of any kind, remotely or on location, and I film in English and Portuguese.</p>
+            <p>I film, edit and produce everything myself, with my own setup: phone, lighting, microphone and tripod. My approach is simple: I get to know your brand, write a script that sounds human and film every detail with care.</p>
             <p>If you want content that brings your brand closer to people, we are going to get along really well.</p>
           </div>
           <ul class="promessas">
@@ -487,7 +504,7 @@
             <li><b>02</b> One round of revisions included in every delivery.</li>
             <li><b>03</b> Delivery within 72 business hours.</li>
           </ul>
-          <p class="assinatura">Laura Alcantara <small>UGC Creator · Limeira, Brazil</small></p>
+          <p class="assinatura">Laura Alcantara <small>UGC Creator · English and Portuguese</small></p>
         </div>
       </div>
     </div>
@@ -495,7 +512,48 @@
 
   <hr class="filete-duplo">
 
-  <!-- ============ 3. HIGHLIGHTS ============ -->
+  <!-- ============ 3. HOTEL STAY COLLAB ============ -->
+  <section class="hotel" id="hotel" aria-labelledby="titulo-hotel">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Special report</span>
+        <h2 id="titulo-hotel">Hotel stay collab</h2>
+        <p class="linha-fina">Host me for a few nights and get content that makes people want to book.</p>
+      </header>
+      <div class="hotel-grade">
+        <div class="hotel-intro revelar">
+          <p>I'm traveling through Europe in March 2027 and I'd love to stay with you. In exchange for the stay, I create content that shows your hotel the way guests really live it: the arrival, the room, the little details and the moments that make people say "I want to be there".</p>
+          <p>Everything is planned with you beforehand, filmed with care during the stay and delivered ready to use.</p>
+          <div class="destaque-bilingue">
+            <strong>Two audiences, one stay</strong>
+            All content comes in English and in Portuguese, so you reach international travelers and Brazilians traveling to Europe for the price of a single stay.
+          </div>
+        </div>
+        <!-- the items in this box come from the HOTEL_TROCA array in the script -->
+        <article class="proposta revelar" aria-labelledby="titulo-proposta">
+          <div class="proposta-topo">
+            <h3 id="titulo-proposta">The collab</h3>
+            <span>UGC for a stay</span>
+          </div>
+          <h4>You offer</h4>
+          <ul id="hotel-oferta"></ul>
+          <h4>You get</h4>
+          <ul id="hotel-recebe"></ul>
+        </article>
+      </div>
+
+      <h3 class="cidades-cabeca revelar">Where I'll be in March 2027</h3>
+      <!-- cities come from the CIDADES array in the script -->
+      <ul class="cidades" id="cidades"></ul>
+      <div class="hotel-cta">
+        <a class="botao botao-primario" href="#contato" id="convite-hotel">Invite me to your hotel</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 4. HIGHLIGHTS ============ -->
   <section id="destaques" aria-labelledby="titulo-destaques">
     <div class="container">
       <header class="secao-cabeca revelar">
@@ -511,7 +569,7 @@
 
   <hr class="filete-duplo">
 
-  <!-- ============ 4. WORK BY NICHE ============ -->
+  <!-- ============ 5. WORK BY NICHE ============ -->
   <section id="trabalhos" aria-labelledby="titulo-trabalhos">
     <div class="container">
       <header class="secao-cabeca revelar">
@@ -526,7 +584,7 @@
 
   <hr class="filete-duplo">
 
-  <!-- ============ 5. HOW I CAN HELP ============ -->
+  <!-- ============ 6. SERVICES ============ -->
   <section id="servicos" aria-labelledby="titulo-servicos">
     <div class="container">
       <header class="secao-cabeca revelar">
@@ -540,32 +598,40 @@
 
   <hr class="filete-duplo">
 
-  <!-- ============ 6. NUMBERS AND TESTIMONIALS ============ -->
-  <section id="numeros" aria-labelledby="titulo-numeros">
+  <!-- ============ 7. WHAT YOU GET ============ -->
+  <section id="entregas" aria-labelledby="titulo-entregas">
     <div class="container">
       <header class="secao-cabeca revelar">
-        <span class="chapeu">The report</span>
-        <h2 id="titulo-numeros">Numbers and testimonials</h2>
+        <span class="chapeu">In every delivery</span>
+        <h2 id="titulo-entregas">What you get</h2>
+        <p class="linha-fina">For hotels and for brands of any kind.</p>
       </header>
-      <div class="metricas revelar" id="metricas"></div>
+      <!-- items come from the ENTREGAS array in the script -->
+      <ul class="entregas revelar" id="entregas-lista"></ul>
+    </div>
+  </section>
 
-      <h3 class="subtitulo-secao">Campaign results</h3>
-      <div class="resultados-grade" id="resultados-grade"></div>
-
-      <h3 class="subtitulo-secao">What brands say</h3>
-      <div class="depoimentos-grade" id="depoimentos-grade"></div>
+  <!-- ============ 8. HOW I WORK ============ -->
+  <section class="como-trabalho" id="como-trabalho" aria-labelledby="titulo-como">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Step by step</span>
+        <h2 id="titulo-como">How I work</h2>
+      </header>
+      <!-- steps come from the PASSOS array in the script -->
+      <ol class="passos revelar" id="passos"></ol>
     </div>
   </section>
 
   <hr class="filete-duplo">
 
-  <!-- ============ 7. LET'S CREATE TOGETHER ============ -->
+  <!-- ============ 9. LET'S CREATE TOGETHER ============ -->
   <section id="contato" aria-labelledby="titulo-contato">
     <div class="container">
       <header class="secao-cabeca revelar">
         <span class="chapeu">Letters to the editor</span>
         <h2 id="titulo-contato">Let's create together?</h2>
-        <p class="linha-fina">Tell me about your brand and what you need. I'll get back to you quickly.</p>
+        <p class="linha-fina">Tell me about your brand or hotel and what you need. Hotels: let me know your city and the dates that work for you.</p>
       </header>
       <div class="contato-grade">
         <div class="formulario revelar">
@@ -582,7 +648,7 @@
               <label for="c-msg">Message</label>
               <textarea id="c-msg" name="mensagem" required></textarea>
             </div>
-            <p class="erro-form" id="erro-contato" role="alert" style="color:var(--vermelho);font-weight:600;margin:0 0 12px"></p>
+            <p class="erro" id="erro-contato" role="alert"></p>
             <button class="botao botao-primario" type="submit">Send message</button>
           </form>
           <div class="confirmacao" id="confirmacao-contato" hidden tabindex="-1">
@@ -602,7 +668,7 @@
 
 </main>
 
-<!-- ============ 8. FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
 <hr class="filete-duplo">
 <footer class="rodape">
   <div class="container rodape-grade">
@@ -611,22 +677,20 @@
       <li><a href="https://www.instagram.com/eusoualau/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://wa.me/5519983362423" target="_blank" rel="noopener">WhatsApp</a></li>
       <li><a href="mailto:lauragalc@gmail.com">Email</a></li>
-      <!-- TIKTOK: replace @seuusuario with your username, or delete this line -->
-      <li><a href="https://www.tiktok.com/@seuusuario" target="_blank" rel="noopener">TikTok</a></li>
       <li><a href="https://lauragalc.github.io/lauragalcugc/" hreflang="pt-BR" lang="pt-BR">Versão em português</a></li>
     </ul>
-    <small>© <span id="ano"></span> Laura Alcantara · Limeira, Brazil</small>
+    <small>© <span id="ano"></span> Laura Alcantara</small>
   </div>
 </footer>
 
-<!-- ============ LEAD CAPTURE CARD (media kit) ============ -->
+<!-- ============ MEDIA KIT CARD ============ -->
 <div class="captura-fundo" id="captura-fundo" hidden>
   <div class="captura" role="dialog" aria-modal="true" aria-labelledby="captura-titulo">
     <button class="captura-fechar" type="button" aria-label="Close">×</button>
     <div id="captura-conteudo">
       <span class="chapeu">Extra edition</span>
       <h2 id="captura-titulo">Want my full media kit?</h2>
-      <p>Leave your name and email and I'll send you everything: formats, rates and results.</p>
+      <p>Leave your name and email and I'll send you everything: formats, packages and hotel collab details.</p>
       <form id="form-captura" novalidate>
         <div class="campo">
           <label for="k-nome">Name</label>
@@ -636,7 +700,7 @@
           <label for="k-email">Email</label>
           <input id="k-email" name="email" type="email" autocomplete="email" required>
         </div>
-        <p id="erro-captura" role="alert" style="color:var(--vermelho);font-weight:600;margin:0 0 12px"></p>
+        <p class="erro" id="erro-captura" role="alert"></p>
         <button class="botao botao-primario" type="submit">Send it to me</button>
       </form>
     </div>
@@ -646,48 +710,56 @@
 <script>
 /* =====================================================================
    PORTFOLIO DATA: edit only here, no need to touch the HTML.
-   Wherever you see "00" or "Brand 01", it is a placeholder to replace.
    ===================================================================== */
 
-// Cover numbers. An empty "valor" ("") shows "00" until you fill it in.
-const NUMEROS_CAPA = [
-  { valor: "", rotulo: "videos delivered" },   // e.g. "120"
-  { valor: "", rotulo: "brands served" },      // e.g. "15"
-  { valor: "", rotulo: "total views" }         // e.g. "1.2M"
-];
+// Hotel stay collab: what the hotel offers and what it gets
+const HOTEL_TROCA = {
+  oferta: [
+    "A 3 night stay for 2 people"
+  ],
+  recebe: [
+    "2 vertical 9:16 videos: a 15 second video to spark desire and a longer stay review",
+    "15 edited photos of the room, the common areas and the experience",
+    "Stories during the stay",
+    "A post on my Instagram @eusoualau tagging the hotel",
+    "All content in English and in Portuguese",
+    "Unlimited usage rights, no expiry date",
+    "Script aligned with you before the stay",
+    "Delivery within 72 business hours after check-out, with one round of revisions included"
+  ]
+};
 
-// Brands in the cover strip
-const MARCAS = [
-  "Hotels", "Brand 02", "Brand 03", "Brand 04", "Brand 05", "Brand 06",
-  "Brand 07", "Brand 08", "Brand 09", "Brand 10", "Brand 11", "Brand 12"
+// Where I'll be in March 2027
+const CIDADES = [
+  { cidade: "Budapest", noites: "3 nights" },
+  { cidade: "Prague", noites: "3 nights" },
+  { cidade: "Vienna", noites: "3 nights" }
 ];
 
 // Featured content.
 // "link": paste the VIDEO LINK here (Reels, TikTok, YouTube...).
 // "capa": path to the vertical 9:16 COVER (e.g. "cover-1.jpg"). Empty shows the gradient block.
+// "tipo": what the video shows (no view counts).
 const DESTAQUES = [
   {
     link: "https://www.instagram.com/reel/DdE2t0HB4fW/",
     capa: "",
-    numero: "1,000",
-    rotulo: "reel views",
-    titulo: "Featured content 01",            // replace with the video title
+    tipo: "15s hook video",
+    titulo: "Featured video 01",                 // replace with the video title
     contexto: "Write one line here about the brand and the goal."
   },
   {
     link: "https://www.instagram.com/reel/DcoMxowR5GA/",
     capa: "",
-    numero: "2,500",
-    rotulo: "reel views",
-    titulo: "Featured content 02",
+    tipo: "Short-form UGC",
+    titulo: "Featured video 02",
     contexto: "Write one line here about the brand and the goal."
   },
   {
-    link: "#",                                  // paste the link of the third video
+    link: "#",                                     // paste the link of the third video
     capa: "",
-    numero: "0,000",
-    rotulo: "reel views",
-    titulo: "Featured content 03",
+    tipo: "Video type",
+    titulo: "Featured video 03",
     contexto: "Write one line here about the brand and the goal."
   }
 ];
@@ -714,31 +786,29 @@ const SERVICOS = [
   { titulo: "Ad cuts", descricao: "Short versions with a strong hook in the first seconds, made for paid traffic." },
   { titulo: "Product photos", descricao: "Natural photos of the product in use, with beautiful light and a real life feel." },
   { titulo: "Unboxing", descricao: "A genuine first impression: opening it, showing the details and sharing what I think." },
-  { titulo: "Post on my profile", descricao: "The content goes live on @eusoualau, speaking directly to my audience." },
-  { titulo: "Monthly package", descricao: "Fresh content every month at a fixed rate, so your brand never runs out of news." }
+  { titulo: "Post on my profile", descricao: "Besides delivering the content to you, I can also publish it on @eusoualau, speaking directly to my audience." },
+  { titulo: "Monthly package", descricao: "Fresh content every month, so your brand never runs out of news." }
+];
+const PRECO_SERVICOS = "Rates on request";
+
+// What you get (any brand)
+const ENTREGAS = [
+  "Vertical 9:16 videos, filmed and edited by me",
+  "Short 15 second videos made to spark interest, and longer explainer videos when the brand needs more detail",
+  "Content in English and Portuguese",
+  "Photos included depending on the package",
+  "Script approved before filming",
+  "One round of revisions included",
+  "Delivery within 72 business hours",
+  "Unlimited usage rights"
 ];
 
-// Animated counters. A numeric "valor" animates; null shows "00" until you fill it in.
-const METRICAS = [
-  { valor: null, sufixo: "", rotulo: "videos delivered" },
-  { valor: null, sufixo: "", rotulo: "brands served" },
-  { valor: null, sufixo: "", rotulo: "total views" },
-  { valor: 4, sufixo: "", rotulo: "niches served" }
-];
-
-// Campaign results (placeholders for you to fill in)
-const RESULTADOS = [
-  { numero: "+00%", rotulo: "Campaign result 01", texto: "Brand 01 · describe here what the campaign achieved." },
-  { numero: "+00%", rotulo: "Campaign result 02", texto: "Brand 02 · describe here what the campaign achieved." },
-  { numero: "+00%", rotulo: "Campaign result 03", texto: "Brand 03 · describe here what the campaign achieved." }
-];
-
-// Testimonials
-const DEPOIMENTOS = [
-  { texto: "Space for the client's testimonial: one or two sentences about working with Laura.", nome: "Client 01", empresa: "Brand 01" },
-  { texto: "Space for the client's testimonial: one or two sentences about working with Laura.", nome: "Client 02", empresa: "Brand 02" },
-  { texto: "Space for the client's testimonial: one or two sentences about working with Laura.", nome: "Client 03", empresa: "Brand 03" },
-  { texto: "Space for the client's testimonial: one or two sentences about working with Laura.", nome: "Client 04", empresa: "Brand 04" }
+// How I work
+const PASSOS = [
+  { titulo: "Brief", texto: "You tell me about your brand, your goal and what you need." },
+  { titulo: "Script", texto: "I write the script and you approve it before anything is filmed." },
+  { titulo: "Filming", texto: "I film and edit everything myself, in English and Portuguese." },
+  { titulo: "Delivery and revision", texto: "You get the content within 72 business hours, with one round of revisions." }
 ];
 
 /* =====================================================================
@@ -747,6 +817,7 @@ const DEPOIMENTOS = [
 const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s) => document.querySelector(s);
 const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const lista = (itens) => itens.map((i) => `<li>${esc(i)}</li>`).join("");
 
 // photo block: real image if a path is set, otherwise gradient with the format caption
 function blocoFoto(caminho, proporcao, legenda, alt, extra) {
@@ -757,21 +828,22 @@ function blocoFoto(caminho, proporcao, legenda, alt, extra) {
   return `<div class="foto ${proporcao}"${papel}>${dentro}${extra || ""}</div>`;
 }
 
-// Cover: numbers
-$("#capa-numeros").innerHTML = NUMEROS_CAPA.map((n) =>
-  `<div><strong>${esc(n.valor || "00")}</strong><span>${esc(n.rotulo)}</span></div>`).join("");
-
-// Cover: brand strip (repeated for continuous scrolling)
-const itensMarcas = MARCAS.map((m) => `<span>${esc(m)}</span>`).join("");
-$("#faixa-marcas").innerHTML = itensMarcas + MARCAS.map((m) => `<span aria-hidden="true">${esc(m)}</span>`).join("");
+// Hotel collab
+$("#hotel-oferta").innerHTML = lista(HOTEL_TROCA.oferta);
+$("#hotel-recebe").innerHTML = lista(HOTEL_TROCA.recebe);
+$("#cidades").innerHTML = CIDADES.map((c) => `
+  <li class="cidade revelar">
+    <span class="cidade-mes">March 2027</span>
+    <h3>${esc(c.cidade)}</h3>
+    <span class="cidade-noites">${esc(c.noites)}</span>
+  </li>`).join("");
 
 // Highlights
-$("#destaques-grade").innerHTML = DESTAQUES.map((d, i) => `
+$("#destaques-grade").innerHTML = DESTAQUES.map((d) => `
   <a class="destaque revelar" href="${esc(d.link)}" ${d.link !== "#" ? 'target="_blank" rel="noopener"' : ""}
-     aria-label="Watch: ${esc(d.titulo)}, ${esc(d.numero)} ${esc(d.rotulo)}">
+     aria-label="Watch: ${esc(d.titulo)}, ${esc(d.tipo)}">
     ${blocoFoto(d.capa, "r-9x16", "video cover 9:16", "Video cover for " + d.titulo, '<span class="play" aria-hidden="true"></span>')}
-    <span class="destaque-numero">+${esc(d.numero)}</span>
-    <span class="destaque-rotulo">${esc(d.rotulo)}</span>
+    <span class="destaque-tipo">${esc(d.tipo)}</span>
     <h3>${esc(d.titulo)}</h3>
     <p>${esc(d.contexto)}</p>
   </a>`).join("");
@@ -813,29 +885,17 @@ $("#servicos-grade").innerHTML = SERVICOS.map((s, i) => `
     <span class="servico-num">${String(i + 1).padStart(2, "0")}</span>
     <h3>${esc(s.titulo)}</h3>
     <p>${esc(s.descricao)}</p>
+    <span class="servico-preco">${esc(PRECO_SERVICOS)}</span>
   </article>`).join("");
 
-// Metrics
-$("#metricas").innerHTML = METRICAS.map((m) => `
-  <div class="metrica">
-    <strong ${typeof m.valor === "number" ? `data-alvo="${m.valor}" data-sufixo="${esc(m.sufixo)}"` : ""}>${typeof m.valor === "number" ? "0" + esc(m.sufixo) : "00"}</strong>
-    <span>${esc(m.rotulo)}</span>
-  </div>`).join("");
-
-// Results
-$("#resultados-grade").innerHTML = RESULTADOS.map((r) => `
-  <article class="resultado revelar">
-    <strong>${esc(r.numero)}</strong>
-    <p class="r-rotulo">${esc(r.rotulo)}</p>
-    <p>${esc(r.texto)}</p>
-  </article>`).join("");
-
-// Testimonials
-$("#depoimentos-grade").innerHTML = DEPOIMENTOS.map((d) => `
-  <figure class="depoimento revelar">
-    <blockquote>${esc(d.texto)}</blockquote>
-    <figcaption>${esc(d.nome)} <span>· ${esc(d.empresa)}</span></figcaption>
-  </figure>`).join("");
+// What you get + How I work
+$("#entregas-lista").innerHTML = lista(ENTREGAS);
+$("#passos").innerHTML = PASSOS.map((p, i) => `
+  <li class="passo">
+    <span class="passo-num">${i + 1}</span>
+    <h3>${esc(p.titulo)}</h3>
+    <p>${esc(p.texto)}</p>
+  </li>`).join("");
 
 // Automatic year
 $("#ano").textContent = new Date().getFullYear();
@@ -852,25 +912,8 @@ menu.addEventListener("click", (e) => {
   if (e.target.closest("a")) { botaoMenu.setAttribute("aria-expanded", "false"); menu.classList.remove("aberto"); }
 });
 
-// Scroll reveal and counters
-function animarContador(el) {
-  const alvo = Number(el.dataset.alvo);
-  const sufixo = el.dataset.sufixo || "";
-  const fmt = (n) => n.toLocaleString("en-US") + sufixo;
-  if (reduzMovimento) { el.textContent = fmt(alvo); return; }
-  const duracao = 1600;
-  const inicio = performance.now();
-  function passo(agora) {
-    const p = Math.min((agora - inicio) / duracao, 1);
-    const suave = 1 - Math.pow(1 - p, 3);
-    el.textContent = fmt(Math.round(alvo * suave));
-    if (p < 1) requestAnimationFrame(passo);
-  }
-  requestAnimationFrame(passo);
-}
-
+// Scroll reveal
 const revelaveis = document.querySelectorAll(".revelar");
-const contadores = document.querySelectorAll("[data-alvo]");
 if ("IntersectionObserver" in window && !reduzMovimento) {
   const obs = new IntersectionObserver((entradas) => {
     entradas.forEach((en) => {
@@ -880,18 +923,8 @@ if ("IntersectionObserver" in window && !reduzMovimento) {
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   revelaveis.forEach((el) => obs.observe(el));
-
-  const obsNum = new IntersectionObserver((entradas) => {
-    entradas.forEach((en) => {
-      if (!en.isIntersecting) return;
-      animarContador(en.target);
-      obsNum.unobserve(en.target);
-    });
-  }, { threshold: 0.5 });
-  contadores.forEach((el) => obsNum.observe(el));
 } else {
   revelaveis.forEach((el) => el.classList.add("visivel"));
-  contadores.forEach(animarContador);
 }
 
 // Simple validation
@@ -913,7 +946,7 @@ $("#form-contato").addEventListener("submit", (e) => {
   conf.focus();
 });
 
-// Lead capture card: shows once per visit, after 7 seconds
+// Media kit card: shows once per visit, after 7 seconds
 const fundo = $("#captura-fundo");
 let focoAnterior = null;
 const CHAVE_CAPTURA = "midiaKitMostrado";
