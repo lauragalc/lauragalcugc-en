@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laura Alcantara · Portfólio UGC Creator</title>
+<meta name="description" content="Laura Alcantara, creator UGC em Limeira. Vídeos e fotos para marcas de beleza, comida, casa e decoração e viagem, com um olhar humano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============ BASE DO JORNAL ============ */
+  :root {
+    --papel: #efece4;
+    --papel-escuro: #e3dfd3;
+    --tinta: #111111;
+    --tinta-suave: #3a3a3a;
+    --vermelho: #c0392b;
+    --vermelho-escuro: #a12f23;
+    --fio: #111111;
+    --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --largura: 1180px;
+    --topo: 104px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--topo); -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--tinta);
+    background-color: var(--papel);
+    /* textura de meio-tom do papel de jornal */
+    background-image: radial-gradient(rgba(0,0,0,.07) 0.8px, transparent 1.1px);
+    background-size: 4px 4px;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; line-height: 1.1; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+  p { margin: 0 0 1em; }
+  .container { width: 100%; max-width: var(--largura); margin: 0 auto; padding: 0 20px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+  .pular {
+    position: absolute; left: 12px; top: -60px; z-index: 300;
+    background: var(--tinta); color: var(--papel); padding: 10px 16px; font-weight: 700; text-decoration: none;
+  }
+  .pular:focus { top: 12px; }
+
+  /* filete duplo, a assinatura do jornal */
+  .filete-duplo { border: 0; border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio); height: 7px; margin: 0; }
+
+  /* ============ CABEÇALHO FIXO ============ */
+  .topo {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background-color: var(--papel);
+    background-image: radial-gradient(rgba(0,0,0,.07) 0.8px, transparent 1.1px);
+    background-size: 4px 4px;
+  }
+  .topo-edicao {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    padding: 7px 0 5px; color: var(--tinta-suave);
+  }
+  .topo-edicao span:last-child { color: var(--vermelho); }
+  .topo-nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 0; }
+  .marca-nome {
+    font-family: var(--serif); font-weight: 700; font-size: 22px; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap;
+  }
+  .marca-nome em { color: var(--vermelho); font-style: normal; }
+  .menu { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .menu a {
+    display: block; padding: 6px 10px; text-decoration: none; font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .1em; border-bottom: 2px solid transparent;
+  }
+  .menu a:hover { border-bottom-color: var(--vermelho); color: var(--vermelho); }
+  .botao-menu {
+    display: none; background: none; border: 2px solid var(--tinta); padding: 8px 10px; cursor: pointer;
+    font: 700 12px var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--tinta);
+    align-items: center; gap: 8px;
+  }
+  .botao-menu .barras, .botao-menu .barras::before, .botao-menu .barras::after {
+    display: block; width: 18px; height: 2px; background: var(--tinta); position: relative; transition: transform .25s, background .25s;
+  }
+  .botao-menu .barras::before, .botao-menu .barras::after { content: ""; position: absolute; left: 0; }
+  .botao-menu .barras::before { top: -6px; }
+  .botao-menu .barras::after { top: 6px; }
+  .botao-menu[aria-expanded="true"] .barras { background: transparent; }
+  .botao-menu[aria-expanded="true"] .barras::before { transform: translateY(6px) rotate(45deg); }
+  .botao-menu[aria-expanded="true"] .barras::after { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ============ BOTÕES ============ */
+  .botao {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px; font: 700 14px var(--sans); letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid var(--tinta); cursor: pointer; transition: transform .15s, background .2s, color .2s;
+  }
+  .botao-primario { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+  .botao-primario:hover { background: var(--vermelho-escuro); border-color: var(--vermelho-escuro); }
+  .botao-secundario { background: transparent; color: var(--tinta); }
+  .botao-secundario:hover { background: var(--tinta); color: var(--papel); }
+  .botao:active { transform: translateY(1px); }
+
+  /* ============ BLOCOS DE FOTO E VÍDEO (placeholders) ============ */
+  .foto {
+    position: relative; width: 100%; overflow: hidden; background: #888;
+    background-image:
+      radial-gradient(rgba(0,0,0,.28) 1px, transparent 1.4px),
+      linear-gradient(160deg, #d9d6cc 0%, #8f8b82 45%, #3b3936 100%);
+    background-size: 5px 5px, 100% 100%;
+    /* preto e branco de verdade: vale para o bloco e para a imagem real */
+    filter: grayscale(1) contrast(1.15);
+  }
+  .foto img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25); }
+  .foto-legenda-formato {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    background: rgba(239,236,228,.92); color: var(--tinta); padding: 6px 12px;
+    font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; border: 1px solid var(--tinta);
+  }
+  .r-4x5 { aspect-ratio: 4 / 5; }
+  .r-9x16 { aspect-ratio: 9 / 16; }
+  .r-1x1 { aspect-ratio: 1 / 1; }
+  figcaption.credito {
+    font-size: 12px; color: var(--tinta-suave); padding-top: 8px; border-top: 1px solid var(--fio); margin-top: 8px; font-style: italic; font-family: var(--serif);
+  }
+
+  /* ============ SEÇÕES ============ */
+  section { padding: 72px 0; }
+  .secao-cabeca { text-align: center; margin-bottom: 44px; }
+  .chapeu {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--vermelho); margin-bottom: 12px;
+  }
+  .secao-cabeca h2 { font-size: clamp(30px, 5vw, 54px); }
+  .secao-cabeca .linha-fina { max-width: 640px; margin: 14px auto 0; color: var(--tinta-suave); font-family: var(--serif); font-style: italic; }
+
+  /* ============ 1. CAPA ============ */
+  .capa { padding-top: calc(var(--topo) + 28px); padding-bottom: 0; }
+  .capa-manchete-topo {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; padding-bottom: 10px; border-bottom: 1px solid var(--fio); margin-bottom: 26px;
+  }
+  .capa-manchete-topo .exclusivo { background: var(--vermelho); color: #fff; padding: 2px 8px; }
+  .capa-grade { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: start; }
+  .capa h1 {
+    font-size: clamp(46px, 9.5vw, 128px); line-height: .92; letter-spacing: -.01em; word-break: break-word;
+  }
+  .capa h1 .linha2 { color: var(--vermelho); display: block; }
+  .capa-frase {
+    font-family: var(--serif); font-size: clamp(19px, 2.3vw, 26px); line-height: 1.4; margin: 26px 0 30px;
+    padding: 16px 0; border-top: 1px solid var(--fio); border-bottom: 1px solid var(--fio);
+  }
+  .capa-botoes { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
+  .capa-numeros { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio); }
+  .capa-numeros div { padding: 14px 12px; border-right: 1px solid var(--fio); }
+  .capa-numeros div:last-child { border-right: 0; }
+  .capa-numeros strong { display: block; font-family: var(--serif); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; }
+  .capa-numeros span { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--tinta-suave); }
+
+  .faixa-marcas {
+    margin-top: 56px; border-top: 3px solid var(--fio); border-bottom: 1px solid var(--fio);
+    overflow: hidden; white-space: nowrap; padding: 10px 0; background: var(--tinta); color: var(--papel);
+  }
+  .faixa-marcas-trilho { display: inline-flex; animation: rolar 38s linear infinite; }
+  .faixa-marcas-trilho span {
+    font-family: var(--serif); text-transform: uppercase; font-size: 15px; letter-spacing: .14em; padding: 0 22px;
+  }
+  .faixa-marcas-trilho span::after { content: "✦"; color: var(--vermelho); margin-left: 44px; font-size: 11px; vertical-align: middle; }
+  @keyframes rolar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ============ 2. SOBRE ============ */
+  .sobre-grade { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+  .sobre-texto { column-count: 2; column-gap: 36px; column-rule: 1px solid var(--fio); }
+  .sobre-texto p:first-child::first-letter {
+    float: left; font-family: var(--serif); font-weight: 700; font-size: 74px; line-height: .8; padding: 6px 10px 0 0; color: var(--vermelho);
+  }
+  .promessas { list-style: none; margin: 28px 0 0; padding: 0; border-top: 3px solid var(--fio); }
+  .promessas li {
+    display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--fio);
+    font-weight: 600;
+  }
+  .promessas li b { font-family: var(--serif); color: var(--vermelho); font-size: 22px; }
+  .assinatura { margin-top: 26px; font-family: var(--serif); font-style: italic; font-size: 28px; }
+  .assinatura small { display: block; font-family: var(--sans); font-style: normal; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); }
+
+  /* ============ 3. DESTAQUES ============ */
+  .destaques-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .destaque {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+    border-top: 3px solid var(--fio); padding-top: 14px; transition: transform .2s;
+  }
+  .destaque:hover { transform: translateY(-4px); }
+  .destaque:hover .play { background: var(--vermelho); }
+  .destaque .foto { margin-bottom: 16px; }
+  .play {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 74px; height: 74px; border-radius: 50%; background: var(--tinta); display: grid; place-items: center;
+    border: 3px solid var(--papel); transition: background .2s;
+  }
+  .play::after { content: ""; border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent #fff; margin-left: 5px; }
+  .destaque .foto-legenda-formato { top: auto; bottom: 14px; }
+  .destaque-numero { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 4.5vw, 54px); line-height: 1; color: var(--vermelho); }
+  .destaque-rotulo { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin: 6px 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--fio); }
+  .destaque h3 { font-size: 20px; margin-bottom: 6px; }
+  .destaque p { color: var(--tinta-suave); font-size: 15px; margin: 0; }
+
+  /* ============ 4. TRABALHOS ============ */
+  .filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px; }
+  .filtro {
+    background: transparent; border: 2px solid var(--tinta); color: var(--tinta); padding: 9px 16px; cursor: pointer;
+    font: 700 13px var(--sans); letter-spacing: .1em; text-transform: uppercase; transition: background .2s, color .2s;
+  }
+  .filtro:hover { background: var(--papel-escuro); }
+  .filtro[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+  .trabalhos-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .trabalho { border-top: 1px solid var(--fio); padding-top: 12px; animation: aparecer .4s ease both; }
+  .trabalho[hidden] { display: none; }
+  .trabalho .foto { margin-bottom: 12px; }
+  .trabalho-nicho { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--vermelho); }
+  .trabalho h3 { font-size: 17px; margin: 4px 0; }
+  .trabalho p { font-size: 14px; color: var(--tinta-suave); margin: 0; }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .trabalhos-vazio { text-align: center; font-style: italic; font-family: var(--serif); }
+
+  /* ============ 5. SERVIÇOS ============ */
+  .servicos-grade { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 3px solid var(--fio); }
+  .servico { padding: 28px 26px 30px; border-bottom: 1px solid var(--fio); border-right: 1px solid var(--fio); }
+  .servico:nth-child(3n) { border-right: 0; }
+  .servico-num { font-family: var(--serif); font-size: 46px; font-weight: 700; color: var(--vermelho); line-height: 1; }
+  .servico h3 { font-size: 20px; margin: 14px 0 10px; }
+  .servico p { margin: 0; color: var(--tinta-suave); font-size: 15px; }
+
+  /* ============ 6. NÚMEROS E DEPOIMENTOS ============ */
+  .metricas { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 3px solid var(--fio); border-bottom: 3px solid var(--fio); background: var(--tinta); color: var(--papel); }
+  .metrica { padding: 30px 18px; text-align: center; border-right: 1px solid rgba(239,236,228,.45); }
+  .metrica:last-child { border-right: 0; }
+  .metrica strong { display: block; font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); line-height: 1; }
+  .metrica span { display: block; margin-top: 10px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .subtitulo-secao {
+    font-family: var(--serif); text-transform: uppercase; font-size: 15px; letter-spacing: .16em; text-align: center;
+    margin: 56px 0 24px; display: flex; align-items: center; gap: 16px;
+  }
+  .subtitulo-secao::before, .subtitulo-secao::after { content: ""; flex: 1; border-top: 1px solid var(--fio); }
+  .resultados-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .resultado { border: 2px solid var(--tinta); padding: 24px; background: var(--papel); }
+  .resultado strong { display: block; font-family: var(--serif); font-size: 44px; color: var(--vermelho); line-height: 1; }
+  .resultado .r-rotulo { font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; margin: 8px 0 12px; }
+  .resultado p { margin: 0; color: var(--tinta-suave); font-size: 15px; }
+  .depoimentos-grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 3px solid var(--fio); }
+  .depoimento { margin: 0; padding: 28px; border-bottom: 1px solid var(--fio); }
+  .depoimento:nth-child(odd) { border-right: 1px solid var(--fio); }
+  .depoimento blockquote { margin: 0 0 14px; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.55; }
+  .depoimento blockquote::before { content: "“"; color: var(--vermelho); font-size: 48px; line-height: 0; vertical-align: -18px; margin-right: 4px; font-style: normal; }
+  .depoimento figcaption { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .depoimento figcaption span { color: var(--tinta-suave); font-weight: 500; }
+
+  /* ============ 7. CONTATO ============ */
+  .contato-grade { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+  .formulario { border-top: 3px solid var(--fio); padding-top: 20px; }
+  .campo { margin-bottom: 18px; }
+  .campo label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+  .campo input, .campo textarea {
+    width: 100%; font: 400 16px var(--sans); color: var(--tinta); background: #f7f5ef;
+    border: 0; border-bottom: 2px solid var(--tinta); padding: 12px; border-radius: 0;
+  }
+  .campo textarea { min-height: 140px; resize: vertical; }
+  .campo input:focus-visible, .campo textarea:focus-visible { outline: 3px solid var(--vermelho); outline-offset: 0; }
+  .confirmacao {
+    border: 2px solid var(--tinta); padding: 22px; background: #f7f5ef; margin-top: 4px;
+  }
+  .confirmacao h3 { color: var(--vermelho); font-size: 22px; margin-bottom: 8px; }
+  .canais { border-top: 3px solid var(--fio); padding-top: 20px; }
+  .canais p { font-family: var(--serif); font-style: italic; }
+  .canal {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--fio);
+    text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 14px;
+  }
+  .canal span:last-child { font-family: var(--sans); text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--tinta-suave); overflow-wrap: anywhere; text-align: right; }
+  .canal:hover span:first-child { color: var(--vermelho); }
+
+  /* ============ 8. RODAPÉ ============ */
+  .rodape { padding: 36px 0 40px; background: var(--tinta); color: var(--papel); }
+  .rodape-grade { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
+  .rodape .marca-nome { color: var(--papel); }
+  .rodape-redes { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; }
+  .rodape-redes a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .rodape-redes a:hover { color: #ff8a7d; }
+  .rodape small { font-size: 13px; opacity: .85; }
+  .rodape :focus-visible { outline-color: #ff8a7d; }
+
+  /* ============ CARD DE CAPTURA ============ */
+  .captura-fundo {
+    position: fixed; inset: 0; z-index: 200; background: rgba(17,17,17,.72);
+    display: grid; place-items: center; padding: 16px; opacity: 0; transition: opacity .3s;
+  }
+  .captura-fundo.aberto { opacity: 1; }
+  .captura-fundo[hidden] { display: none; }
+  .captura {
+    position: relative; width: 100%; max-width: 440px; background: var(--papel); border: 3px solid var(--tinta);
+    padding: 32px 26px 26px; box-shadow: 10px 10px 0 var(--vermelho); max-height: calc(100vh - 32px); overflow-y: auto;
+  }
+  .captura .chapeu { margin-bottom: 6px; }
+  .captura h2 { font-size: 26px; margin-bottom: 10px; }
+  .captura > p { color: var(--tinta-suave); font-size: 15px; }
+  .captura-fechar {
+    position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; background: none; border: 0; cursor: pointer;
+    font-size: 28px; line-height: 1; color: var(--tinta);
+  }
+  .captura-fechar:hover { color: var(--vermelho); }
+  .captura .botao { width: 100%; }
+
+  /* ============ ANIMAÇÃO DE ENTRADA ============ */
+  .revelar { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .revelar.visivel { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 1020px) {
+    .menu a { padding: 6px 7px; font-size: 12px; letter-spacing: .06em; }
+    .trabalhos-grade { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 880px) {
+    :root { --topo: 96px; }
+    .botao-menu { display: inline-flex; }
+    .menu {
+      display: none; position: absolute; left: 0; right: 0; top: 100%;
+      flex-direction: column; gap: 0; background: var(--papel); border-top: 1px solid var(--fio); border-bottom: 3px solid var(--fio);
+      padding: 6px 20px 14px;
+    }
+    .menu.aberto { display: flex; }
+    .menu a { padding: 14px 4px; font-size: 15px; border-bottom: 1px solid rgba(17,17,17,.2); }
+    .topo-nav { position: relative; }
+    .capa-grade, .sobre-grade, .contato-grade { grid-template-columns: 1fr; gap: 32px; }
+    .capa-foto { max-width: 420px; }
+    .sobre-foto { max-width: 420px; }
+    .destaques-grade { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 44px; }
+    .servicos-grade { grid-template-columns: repeat(2, 1fr); }
+    .servico:nth-child(3n) { border-right: 1px solid var(--fio); }
+    .servico:nth-child(2n) { border-right: 0; }
+    .metricas { grid-template-columns: repeat(2, 1fr); }
+    .metrica:nth-child(2) { border-right: 0; }
+    .metrica:nth-child(-n+2) { border-bottom: 1px solid rgba(239,236,228,.45); }
+    .resultados-grade { grid-template-columns: 1fr; }
+    .trabalhos-grade { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    section { padding: 56px 0; }
+    .container { padding: 0 16px; }
+    .topo-edicao span.esconde-celular { display: none; }
+    .marca-nome { font-size: 18px; }
+    .sobre-texto { column-count: 1; }
+    .capa-numeros div { padding: 12px 8px; }
+    .capa-numeros span { font-size: 10px; letter-spacing: .06em; }
+    .capa-botoes .botao { flex: 1 1 100%; }
+    .servicos-grade { grid-template-columns: 1fr; }
+    .servico { border-right: 0 !important; }
+    .depoimentos-grade { grid-template-columns: 1fr; }
+    .depoimento:nth-child(odd) { border-right: 0; }
+    .depoimento { padding: 24px 0; }
+    .trabalhos-grade { gap: 16px; }
+    .trabalho h3 { font-size: 15px; }
+  }
+  @media (max-width: 380px) {
+    .trabalhos-grade { grid-template-columns: 1fr; }
+  }
+
+  /* ============ MOVIMENTO REDUZIDO ============ */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .revelar { opacity: 1; transform: none; }
+    .faixa-marcas { white-space: normal; }
+    .faixa-marcas-trilho { flex-wrap: wrap; justify-content: center; display: flex; }
+    .faixa-marcas-trilho span[aria-hidden="true"] { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============ CABEÇALHO DE JORNAL + MENU FIXO ============ -->
+<header class="topo">
+  <div class="container">
+    <div class="topo-edicao">
+      <span>Edição diária · Ano I nº 001 · Limeira</span>
+      <span class="esconde-celular">Caderno UGC</span>
+    </div>
+  </div>
+  <hr class="filete-duplo">
+  <div class="container">
+    <nav class="topo-nav" aria-label="Menu principal">
+      <a class="marca-nome" href="#capa">Laura <em>Alcantara</em></a>
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="barras" aria-hidden="true"></span> Menu
+      </button>
+      <ul class="menu" id="menu-principal">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#destaques">Destaques</a></li>
+        <li><a href="#trabalhos">Trabalhos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#numeros">Números</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+  <hr class="filete-duplo">
+</header>
+
+<main id="conteudo">
+
+  <!-- ============ 1. CAPA ============ -->
+  <section class="capa" id="capa" aria-labelledby="titulo-capa">
+    <div class="container">
+      <div class="capa-manchete-topo">
+        <span class="exclusivo">Exclusivo</span>
+        <span>Creator UGC · Beleza · Comida · Casa e decoração · Viagem</span>
+      </div>
+      <div class="capa-grade">
+        <div>
+          <h1 id="titulo-capa">Laura <span class="linha2">Alcantara</span></h1>
+          <p class="capa-frase">Dando vida a marcas com um olhar humano. Crio vídeos e fotos que parecem conversa de amiga e vendem como anúncio.</p>
+          <div class="capa-botoes">
+            <a class="botao botao-primario" href="#contato">Falar comigo</a>
+            <a class="botao botao-secundario" href="#destaques">Ver os trabalhos</a>
+          </div>
+          <!-- os três números da capa vêm do array NUMEROS_CAPA no script -->
+          <div class="capa-numeros" id="capa-numeros"></div>
+        </div>
+        <figure class="capa-foto revelar" style="margin:0">
+          <!-- FOTO DA CAPA: para usar a sua foto, troque o div abaixo por
+               <div class="foto r-4x5"><img src="sua-foto.jpg" alt="Laura Alcantara sorrindo para a câmera"></div> -->
+          <div class="foto r-4x5" role="img" aria-label="Espaço para a foto da creator Laura Alcantara">
+            <span class="foto-legenda-formato">foto da creator 4:5</span>
+          </div>
+          <figcaption class="credito">Laura Alcantara, creator UGC, em Limeira.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <!-- faixa com os nomes das marcas: edite o array MARCAS no script -->
+    <div class="faixa-marcas" aria-label="Marcas com quem já trabalhei">
+      <div class="faixa-marcas-trilho" id="faixa-marcas"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 2. SOBRE MIM ============ -->
+  <section id="sobre" aria-labelledby="titulo-sobre">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Perfil</span>
+        <h2 id="titulo-sobre">Quem assina esta edição</h2>
+      </header>
+      <div class="sobre-grade">
+        <figure class="sobre-foto revelar" style="margin:0">
+          <!-- FOTO DO SOBRE: troque o div por
+               <div class="foto r-4x5"><img src="sua-foto-2.jpg" alt="Laura Alcantara gravando um vídeo"></div> -->
+          <div class="foto r-4x5" role="img" aria-label="Espaço para a foto de Laura Alcantara gravando conteúdo">
+            <span class="foto-legenda-formato">foto da creator 4:5</span>
+          </div>
+          <figcaption class="credito">Bastidores de uma gravação.</figcaption>
+        </figure>
+        <div class="revelar">
+          <div class="sobre-texto">
+            <p>Oi, eu sou a Laura! Moro em Limeira e passo os meus dias transformando produtos em histórias que as pessoas querem assistir até o fim. Acredito que o melhor conteúdo é aquele que parece real, porque é real: gente de verdade usando, sentindo e contando o que achou.</p>
+            <p>Trabalho com beleza, comida, casa e decoração e viagem, e já criei conteúdo para hotéis que queriam mostrar a experiência de quem se hospeda. Meu jeito é simples: entendo a sua marca, escrevo um roteiro com cara de gente e gravo com cuidado em cada detalhe.</p>
+            <p>Se você quer conteúdo que aproxima a sua marca das pessoas, a gente vai se dar muito bem.</p>
+          </div>
+          <ul class="promessas">
+            <li><b>01</b> Roteiro aprovado por você antes de eu gravar.</li>
+            <li><b>02</b> Uma rodada de ajuste inclusa em cada entrega.</li>
+            <li><b>03</b> Entrega em até 72 horas úteis.</li>
+          </ul>
+          <p class="assinatura">Laura Alcantara <small>Creator UGC · Limeira</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 3. CONTEÚDOS DE DESTAQUE ============ -->
+  <section id="destaques" aria-labelledby="titulo-destaques">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Em destaque</span>
+        <h2 id="titulo-destaques">As manchetes da semana</h2>
+        <p class="linha-fina">Toque em um vídeo para assistir no Instagram.</p>
+      </header>
+      <!-- os cards são montados pelo array DESTAQUES no script:
+           o LINK DO VÍDEO entra no campo "link" e a CAPA entra no campo "capa" -->
+      <div class="destaques-grade" id="destaques-grade"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 4. TRABALHOS POR NICHO ============ -->
+  <section id="trabalhos" aria-labelledby="titulo-trabalhos">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Classificados</span>
+        <h2 id="titulo-trabalhos">Trabalhos por nicho</h2>
+        <p class="linha-fina">Escolha um nicho para ver só os trabalhos dele.</p>
+      </header>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar trabalhos por nicho"></div>
+      <div class="trabalhos-grade" id="trabalhos-grade" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 5. COMO EU TE AJUDO ============ -->
+  <section id="servicos" aria-labelledby="titulo-servicos">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Serviços</span>
+        <h2 id="titulo-servicos">Como eu te ajudo</h2>
+        <p class="linha-fina">Do roteiro à entrega, tudo pensado para a sua marca vender com naturalidade.</p>
+      </header>
+      <div class="servicos-grade revelar" id="servicos-grade"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 6. NÚMEROS E DEPOIMENTOS ============ -->
+  <section id="numeros" aria-labelledby="titulo-numeros">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Balanço</span>
+        <h2 id="titulo-numeros">Números e depoimentos</h2>
+      </header>
+      <div class="metricas revelar" id="metricas"></div>
+
+      <h3 class="subtitulo-secao">Resultados de campanha</h3>
+      <div class="resultados-grade" id="resultados-grade"></div>
+
+      <h3 class="subtitulo-secao">O que dizem as marcas</h3>
+      <div class="depoimentos-grade" id="depoimentos-grade"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ 7. BORA CRIAR JUNTOS ============ -->
+  <section id="contato" aria-labelledby="titulo-contato">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Cartas à redação</span>
+        <h2 id="titulo-contato">Bora criar juntos?</h2>
+        <p class="linha-fina">Me conta da sua marca e do que você precisa. Respondo rapidinho.</p>
+      </header>
+      <div class="contato-grade">
+        <div class="formulario revelar">
+          <form id="form-contato" novalidate>
+            <div class="campo">
+              <label for="c-nome">Nome</label>
+              <input id="c-nome" name="nome" type="text" autocomplete="name" required>
+            </div>
+            <div class="campo">
+              <label for="c-email">E-mail</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="campo">
+              <label for="c-msg">Mensagem</label>
+              <textarea id="c-msg" name="mensagem" required></textarea>
+            </div>
+            <p class="erro-form" id="erro-contato" role="alert" style="color:var(--vermelho);font-weight:600;margin:0 0 12px"></p>
+            <button class="botao botao-primario" type="submit">Enviar mensagem</button>
+          </form>
+          <div class="confirmacao" id="confirmacao-contato" hidden tabindex="-1">
+            <h3>Mensagem recebida!</h3>
+            <p style="margin:0">Obrigada pelo contato. Vou ler com carinho e te respondo em breve pelo e-mail que você deixou.</p>
+          </div>
+        </div>
+        <aside class="canais revelar" aria-label="Outros canais de contato">
+          <p>Prefere falar direto? Escolha o canal:</p>
+          <a class="canal" href="https://wa.me/5519983362423" target="_blank" rel="noopener"><span>WhatsApp</span><span>(19) 98336-2423</span></a>
+          <a class="canal" href="mailto:lauragalc@gmail.com"><span>E-mail</span><span>lauragalc@gmail.com</span></a>
+          <a class="canal" href="https://www.instagram.com/eusoualau/" target="_blank" rel="noopener"><span>Instagram</span><span>@eusoualau</span></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ 8. RODAPÉ ============ -->
+<hr class="filete-duplo">
+<footer class="rodape">
+  <div class="container rodape-grade">
+    <a class="marca-nome" href="#capa">Laura Alcantara</a>
+    <ul class="rodape-redes">
+      <li><a href="https://www.instagram.com/eusoualau/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://wa.me/5519983362423" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="mailto:lauragalc@gmail.com">E-mail</a></li>
+      <!-- TIKTOK: troque @seuusuario pelo seu usuário, ou apague esta linha -->
+      <li><a href="https://www.tiktok.com/@seuusuario" target="_blank" rel="noopener">TikTok</a></li>
+    </ul>
+    <small>© <span id="ano"></span> Laura Alcantara · Limeira</small>
+  </div>
+</footer>
+
+<!-- ============ CARD DE CAPTURA (mídia kit) ============ -->
+<div class="captura-fundo" id="captura-fundo" hidden>
+  <div class="captura" role="dialog" aria-modal="true" aria-labelledby="captura-titulo">
+    <button class="captura-fechar" type="button" aria-label="Fechar">×</button>
+    <div id="captura-conteudo">
+      <span class="chapeu">Edição extra</span>
+      <h2 id="captura-titulo">Quer meu mídia kit completo?</h2>
+      <p>Deixe seu nome e e-mail e eu te mando tudo: formatos, valores e resultados.</p>
+      <form id="form-captura" novalidate>
+        <div class="campo">
+          <label for="k-nome">Nome</label>
+          <input id="k-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="campo">
+          <label for="k-email">E-mail</label>
+          <input id="k-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <p id="erro-captura" role="alert" style="color:var(--vermelho);font-weight:600;margin:0 0 12px"></p>
+        <button class="botao botao-primario" type="submit">Quero receber</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   DADOS DO PORTFÓLIO: edite só aqui, sem mexer no HTML.
+   Onde aparece "00" ou "Marca 01", é placeholder para você trocar.
+   ===================================================================== */
+
+// Números da capa. "valor" vazio ("") mostra "00" até você preencher.
+const NUMEROS_CAPA = [
+  { valor: "", rotulo: "vídeos entregues" },   // ex.: "120"
+  { valor: "", rotulo: "marcas atendidas" },   // ex.: "15"
+  { valor: "", rotulo: "views somadas" }        // ex.: "1,2M"
+];
+
+// Marcas da faixa da capa
+const MARCAS = [
+  "Hotéis", "Marca 02", "Marca 03", "Marca 04", "Marca 05", "Marca 06",
+  "Marca 07", "Marca 08", "Marca 09", "Marca 10", "Marca 11", "Marca 12"
+];
+
+// Conteúdos de destaque.
+// "link": cole aqui o LINK DO VÍDEO (Reels, TikTok, YouTube...).
+// "capa": caminho da CAPA vertical 9:16 (ex.: "capa-1.jpg"). Vazio mostra o bloco com degradê.
+const DESTAQUES = [
+  {
+    link: "https://www.instagram.com/reel/DdE2t0HB4fW/",
+    capa: "",
+    numero: "1.000",
+    rotulo: "views no reels",
+    titulo: "Conteúdo de destaque 01",          // troque pelo título do vídeo
+    contexto: "Escreva aqui uma linha sobre a marca e o objetivo."
+  },
+  {
+    link: "https://www.instagram.com/reel/DcoMxowR5GA/",
+    capa: "",
+    numero: "2.500",
+    rotulo: "views no reels",
+    titulo: "Conteúdo de destaque 02",
+    contexto: "Escreva aqui uma linha sobre a marca e o objetivo."
+  },
+  {
+    link: "#",                                    // cole o link do terceiro vídeo
+    capa: "",
+    numero: "0.000",
+    rotulo: "views no reels",
+    titulo: "Conteúdo de destaque 03",
+    contexto: "Escreva aqui uma linha sobre a marca e o objetivo."
+  }
+];
+
+// Nichos dos filtros (o primeiro botão "Todos" é criado sozinho)
+const NICHOS = ["Beleza", "Comida", "Casa e decoração", "Viagem"];
+
+// Trabalhos da galeria. "nicho" precisa ser igual a um nome da lista NICHOS.
+// "imagem": caminho da foto (ex.: "trabalho-1.jpg"). Vazio mostra o bloco com degradê.
+const TRABALHOS = [
+  { nicho: "Beleza", titulo: "Rotina de skincare", marca: "Marca 01", formato: "Vídeo UGC 9:16", imagem: "" },
+  { nicho: "Beleza", titulo: "Antes e depois de maquiagem", marca: "Marca 02", formato: "Corte para anúncio", imagem: "" },
+  { nicho: "Comida", titulo: "Receita rápida com o produto", marca: "Marca 03", formato: "Vídeo UGC 9:16", imagem: "" },
+  { nicho: "Comida", titulo: "Prova de sabor sincera", marca: "Marca 04", formato: "Fotos do produto", imagem: "" },
+  { nicho: "Casa e decoração", titulo: "Cantinho transformado", marca: "Marca 05", formato: "Vídeo UGC 9:16", imagem: "" },
+  { nicho: "Casa e decoração", titulo: "Unboxing de decoração", marca: "Marca 06", formato: "Unboxing", imagem: "" },
+  { nicho: "Viagem", titulo: "Tour pelo quarto do hotel", marca: "Hotéis", formato: "Vídeo UGC 9:16", imagem: "" },
+  { nicho: "Viagem", titulo: "Um dia de hospedagem", marca: "Hotéis", formato: "Publicação no perfil", imagem: "" }
+];
+
+// Serviços (o número é colocado sozinho, na ordem)
+const SERVICOS = [
+  { titulo: "Vídeo UGC", descricao: "Vídeos verticais com roteiro, gravação e edição, prontos para as redes da sua marca." },
+  { titulo: "Corte para anúncio", descricao: "Versões curtas com gancho forte nos primeiros segundos, feitas para tráfego pago." },
+  { titulo: "Fotos do produto", descricao: "Fotos naturais do produto em uso, com luz bonita e cara de vida real." },
+  { titulo: "Unboxing", descricao: "A primeira impressão de verdade: abrir, mostrar os detalhes e contar o que achei." },
+  { titulo: "Publicação no meu perfil", descricao: "O conteúdo vai ao ar no @eusoualau, falando direto com a minha audiência." },
+  { titulo: "Pacote mensal", descricao: "Conteúdo todo mês com valor fechado, para a sua marca nunca ficar sem novidade." }
+];
+
+// Métricas com contador. "valor" numérico anima; null mostra "00" até você preencher.
+const METRICAS = [
+  { valor: null, sufixo: "", rotulo: "vídeos entregues" },
+  { valor: null, sufixo: "", rotulo: "marcas atendidas" },
+  { valor: null, sufixo: "", rotulo: "views somadas" },
+  { valor: 4, sufixo: "", rotulo: "nichos atendidos" }
+];
+
+// Resultados de campanha (placeholders para você preencher)
+const RESULTADOS = [
+  { numero: "+00%", rotulo: "Resultado da campanha 01", texto: "Marca 01 · descreva aqui o que a campanha alcançou." },
+  { numero: "+00%", rotulo: "Resultado da campanha 02", texto: "Marca 02 · descreva aqui o que a campanha alcançou." },
+  { numero: "+00%", rotulo: "Resultado da campanha 03", texto: "Marca 03 · descreva aqui o que a campanha alcançou." }
+];
+
+// Depoimentos
+const DEPOIMENTOS = [
+  { texto: "Espaço para o depoimento do cliente: uma ou duas frases sobre como foi trabalhar com a Laura.", nome: "Cliente 01", empresa: "Marca 01" },
+  { texto: "Espaço para o depoimento do cliente: uma ou duas frases sobre como foi trabalhar com a Laura.", nome: "Cliente 02", empresa: "Marca 02" },
+  { texto: "Espaço para o depoimento do cliente: uma ou duas frases sobre como foi trabalhar com a Laura.", nome: "Cliente 03", empresa: "Marca 03" },
+  { texto: "Espaço para o depoimento do cliente: uma ou duas frases sobre como foi trabalhar com a Laura.", nome: "Cliente 04", empresa: "Marca 04" }
+];
+
+/* =====================================================================
+   DAQUI PARA BAIXO É O FUNCIONAMENTO DA PÁGINA
+   ===================================================================== */
+const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s) => document.querySelector(s);
+const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// bloco de foto: imagem real se houver caminho, senão degradê com legenda do formato
+function blocoFoto(caminho, proporcao, legenda, alt, extra) {
+  const dentro = caminho
+    ? `<img src="${esc(caminho)}" alt="${esc(alt)}" loading="lazy">`
+    : `<span class="foto-legenda-formato">${esc(legenda)}</span>`;
+  const papel = caminho ? "" : ` role="img" aria-label="${esc(alt)}"`;
+  return `<div class="foto ${proporcao}"${papel}>${dentro}${extra || ""}</div>`;
+}
+
+// Capa: números
+$("#capa-numeros").innerHTML = NUMEROS_CAPA.map((n) =>
+  `<div><strong>${esc(n.valor || "00")}</strong><span>${esc(n.rotulo)}</span></div>`).join("");
+
+// Capa: faixa de marcas (repetida para o rolamento contínuo)
+const itensMarcas = MARCAS.map((m) => `<span>${esc(m)}</span>`).join("");
+$("#faixa-marcas").innerHTML = itensMarcas + MARCAS.map((m) => `<span aria-hidden="true">${esc(m)}</span>`).join("");
+
+// Destaques
+$("#destaques-grade").innerHTML = DESTAQUES.map((d, i) => `
+  <a class="destaque revelar" href="${esc(d.link)}" ${d.link !== "#" ? 'target="_blank" rel="noopener"' : ""}
+     aria-label="Assistir: ${esc(d.titulo)}, ${esc(d.numero)} ${esc(d.rotulo)}">
+    ${blocoFoto(d.capa, "r-9x16", "capa do vídeo 9:16", "Capa do vídeo " + d.titulo, '<span class="play" aria-hidden="true"></span>')}
+    <span class="destaque-numero">+${esc(d.numero)}</span>
+    <span class="destaque-rotulo">${esc(d.rotulo)}</span>
+    <h3>${esc(d.titulo)}</h3>
+    <p>${esc(d.contexto)}</p>
+  </a>`).join("");
+
+// Trabalhos + filtros
+const filtrosEl = $("#filtros");
+const gradeTrab = $("#trabalhos-grade");
+filtrosEl.innerHTML = ["Todos", ...NICHOS].map((n, i) =>
+  `<button class="filtro" type="button" data-nicho="${esc(n)}" aria-pressed="${i === 0}">${esc(n)}</button>`).join("");
+gradeTrab.innerHTML = TRABALHOS.map((t) => `
+  <article class="trabalho" data-nicho="${esc(t.nicho)}">
+    ${blocoFoto(t.imagem, "r-4x5", "trabalho 4:5", t.titulo + " para " + t.marca)}
+    <span class="trabalho-nicho">${esc(t.nicho)}</span>
+    <h3>${esc(t.titulo)}</h3>
+    <p>${esc(t.marca)} · ${esc(t.formato)}</p>
+  </article>`).join("") + `<p class="trabalhos-vazio" hidden>Em breve, novos trabalhos neste nicho.</p>`;
+
+filtrosEl.addEventListener("click", (e) => {
+  const botao = e.target.closest(".filtro");
+  if (!botao) return;
+  const nicho = botao.dataset.nicho;
+  filtrosEl.querySelectorAll(".filtro").forEach((b) => b.setAttribute("aria-pressed", b === botao));
+  let visiveis = 0;
+  gradeTrab.querySelectorAll(".trabalho").forEach((card) => {
+    const mostra = nicho === "Todos" || card.dataset.nicho === nicho;
+    card.hidden = !mostra;
+    if (mostra) {
+      visiveis++;
+      card.style.animation = "none"; void card.offsetWidth; card.style.animation = "";
+    }
+  });
+  gradeTrab.querySelector(".trabalhos-vazio").hidden = visiveis > 0;
+});
+
+// Serviços
+$("#servicos-grade").innerHTML = SERVICOS.map((s, i) => `
+  <article class="servico">
+    <span class="servico-num">${String(i + 1).padStart(2, "0")}</span>
+    <h3>${esc(s.titulo)}</h3>
+    <p>${esc(s.descricao)}</p>
+  </article>`).join("");
+
+// Métricas
+$("#metricas").innerHTML = METRICAS.map((m) => `
+  <div class="metrica">
+    <strong ${typeof m.valor === "number" ? `data-alvo="${m.valor}" data-sufixo="${esc(m.sufixo)}"` : ""}>${typeof m.valor === "number" ? "0" + esc(m.sufixo) : "00"}</strong>
+    <span>${esc(m.rotulo)}</span>
+  </div>`).join("");
+
+// Resultados
+$("#resultados-grade").innerHTML = RESULTADOS.map((r) => `
+  <article class="resultado revelar">
+    <strong>${esc(r.numero)}</strong>
+    <p class="r-rotulo">${esc(r.rotulo)}</p>
+    <p>${esc(r.texto)}</p>
+  </article>`).join("");
+
+// Depoimentos
+$("#depoimentos-grade").innerHTML = DEPOIMENTOS.map((d) => `
+  <figure class="depoimento revelar">
+    <blockquote>${esc(d.texto)}</blockquote>
+    <figcaption>${esc(d.nome)} <span>· ${esc(d.empresa)}</span></figcaption>
+  </figure>`).join("");
+
+// Ano automático
+$("#ano").textContent = new Date().getFullYear();
+
+// Menu sanduíche
+const botaoMenu = $(".botao-menu");
+const menu = $("#menu-principal");
+botaoMenu.addEventListener("click", () => {
+  const aberto = botaoMenu.getAttribute("aria-expanded") === "true";
+  botaoMenu.setAttribute("aria-expanded", !aberto);
+  menu.classList.toggle("aberto", !aberto);
+});
+menu.addEventListener("click", (e) => {
+  if (e.target.closest("a")) { botaoMenu.setAttribute("aria-expanded", "false"); menu.classList.remove("aberto"); }
+});
+
+// Animação de entrada e contadores
+function animarContador(el) {
+  const alvo = Number(el.dataset.alvo);
+  const sufixo = el.dataset.sufixo || "";
+  const fmt = (n) => n.toLocaleString("pt-BR") + sufixo;
+  if (reduzMovimento) { el.textContent = fmt(alvo); return; }
+  const duracao = 1600;
+  const inicio = performance.now();
+  function passo(agora) {
+    const p = Math.min((agora - inicio) / duracao, 1);
+    const suave = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(Math.round(alvo * suave));
+    if (p < 1) requestAnimationFrame(passo);
+  }
+  requestAnimationFrame(passo);
+}
+
+const revelaveis = document.querySelectorAll(".revelar");
+const contadores = document.querySelectorAll("[data-alvo]");
+if ("IntersectionObserver" in window && !reduzMovimento) {
+  const obs = new IntersectionObserver((entradas) => {
+    entradas.forEach((en) => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add("visivel");
+      obs.unobserve(en.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  revelaveis.forEach((el) => obs.observe(el));
+
+  const obsNum = new IntersectionObserver((entradas) => {
+    entradas.forEach((en) => {
+      if (!en.isIntersecting) return;
+      animarContador(en.target);
+      obsNum.unobserve(en.target);
+    });
+  }, { threshold: 0.5 });
+  contadores.forEach((el) => obsNum.observe(el));
+} else {
+  revelaveis.forEach((el) => el.classList.add("visivel"));
+  contadores.forEach(animarContador);
+}
+
+// Validação simples
+const emailValido = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+// Formulário de contato: confirma na própria tela, sem recarregar
+$("#form-contato").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const erro = $("#erro-contato");
+  if (!f.nome.value.trim() || !emailValido(f.email.value.trim()) || !f.mensagem.value.trim()) {
+    erro.textContent = "Preencha nome, um e-mail válido e a mensagem.";
+    return;
+  }
+  erro.textContent = "";
+  f.hidden = true;
+  const conf = $("#confirmacao-contato");
+  conf.hidden = false;
+  conf.focus();
+});
+
+// Card de captura: aparece uma vez por visita, depois de 7 segundos
+const fundo = $("#captura-fundo");
+let focoAnterior = null;
+const CHAVE_CAPTURA = "midiaKitMostrado";
+
+function jaMostrou() { try { return sessionStorage.getItem(CHAVE_CAPTURA) === "1"; } catch (err) { return false; } }
+function marcarMostrado() { try { sessionStorage.setItem(CHAVE_CAPTURA, "1"); } catch (err) {} }
+
+function abrirCaptura() {
+  focoAnterior = document.activeElement;
+  fundo.hidden = false;
+  requestAnimationFrame(() => fundo.classList.add("aberto"));
+  marcarMostrado();
+  $("#k-nome").focus();
+  document.addEventListener("keydown", teclasCaptura);
+}
+function fecharCaptura() {
+  fundo.classList.remove("aberto");
+  setTimeout(() => { fundo.hidden = true; }, reduzMovimento ? 0 : 300);
+  document.removeEventListener("keydown", teclasCaptura);
+  if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
+}
+function teclasCaptura(e) {
+  if (e.key === "Escape") { fecharCaptura(); return; }
+  if (e.key === "Tab") {
+    // mantém o foco dentro do card
+    const focaveis = fundo.querySelectorAll("button, input, [tabindex]:not([tabindex='-1'])");
+    const visiveis = Array.from(focaveis).filter((el) => el.offsetParent !== null);
+    const primeiro = visiveis[0], ultimo = visiveis[visiveis.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+  }
+}
+fundo.addEventListener("click", (e) => { if (e.target === fundo) fecharCaptura(); });
+$(".captura-fechar").addEventListener("click", fecharCaptura);
+$("#form-captura").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.nome.value.trim() || !emailValido(f.email.value.trim())) {
+    $("#erro-captura").textContent = "Preencha seu nome e um e-mail válido.";
+    return;
+  }
+  $("#captura-conteudo").innerHTML = `
+    <span class="chapeu">Tudo certo</span>
+    <h2 id="captura-titulo" tabindex="-1">Obrigada, ${esc(f.nome.value.trim().split(" ")[0])}!</h2>
+    <p>Meu mídia kit completo vai chegar no seu e-mail em breve.</p>
+    <button class="botao botao-secundario" type="button" id="captura-ok">Fechar</button>`;
+  $("#captura-ok").addEventListener("click", fecharCaptura);
+  $("#captura-ok").focus();
+});
+if (!jaMostrou()) setTimeout(() => { if (!jaMostrou()) abrirCaptura(); }, 7000);
+</script>
+</body>
+</html>
