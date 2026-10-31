@@ -440,6 +440,43 @@
   .rodape small { color: #DDE6D8; }
   .rodape-redes a:hover { color: var(--butter); }
   .rodape :focus-visible { outline-color: var(--butter); }
+
+  /* ============ NAV: each item wrapped in one palette colour ============ */
+  .menu { gap: 8px; }
+  .menu a { padding: 7px 16px; font-weight: 600; transition: filter .2s, transform .15s; }
+  .menu li:nth-child(4n+1) a { background: #9A5743; color: #FAF6EF; }
+  .menu li:nth-child(4n+2) a { background: #4E6B57; color: #FAF6EF; }
+  .menu li:nth-child(4n+3) a { background: #E0A48F; color: #2E2A26; }
+  .menu li:nth-child(4n+4) a { background: #A9C2A7; color: #2E2A26; }
+  .menu li a:hover { background-color: inherit; filter: brightness(.92); transform: translateY(-1px); }
+  .menu li:nth-child(4n+1) a:hover { background: #9A5743; }
+  .menu li:nth-child(4n+2) a:hover { background: #4E6B57; }
+  .menu li:nth-child(4n+3) a:hover { background: #E0A48F; }
+  .menu li:nth-child(4n+4) a:hover { background: #A9C2A7; }
+  .menu li a.idioma, .menu li a.idioma:hover { background: transparent; color: #2E2A26; border: 1px solid #2E2A26; margin-left: 4px; }
+  .menu li a.idioma:hover { background: #2E2A26; color: #FAF6EF; }
+
+  /* second name in terracotta / wine */
+  .capa h1 .linha2, .marca-nome em { color: #9A5743; }
+
+  /* leaner content */
+  .capa-frase { margin-bottom: 12px; }
+  .capa-sub { margin: 0 0 32px; font-size: 18px; }
+  .sobre-texto { column-count: 1; font-size: 19px; max-width: 46ch; }
+  .sobre-texto p:first-child::first-letter { float: none; font-size: inherit; padding: 0; line-height: inherit; color: inherit; }
+  .sobre-grade { align-items: center; }
+  .porque-manchete { margin-bottom: 44px; }
+  .porque-item p { font-size: 17px; }
+  .servicos-grade { grid-template-columns: repeat(4, 1fr); }
+  .hotel-intro .destaque-bilingue { font-size: 16px; }
+  @media (max-width: 1020px) { .menu { gap: 6px; } .menu a { padding: 6px 11px; } }
+  @media (max-width: 880px) {
+    .menu { gap: 8px; padding: 12px 24px 18px; }
+    .menu a { padding: 12px 18px; border-bottom: 0; border-radius: 999px; text-align: center; }
+    .menu li a.idioma { margin: 4px 0 0; }
+    .servicos-grade { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) { .servicos-grade { grid-template-columns: 1fr; } .sobre-texto { font-size: 17px; } }
 </style>
 </head>
 <body>
@@ -484,20 +521,21 @@
     <div class="container">
       <div class="capa-manchete-topo">
         <span class="exclusivo">Open for collabs</span>
-        <span>Bilingual UGC Creator · English · Portuguese</span>
+        <span>UGC Creator · EN / PT</span>
       </div>
       <div class="capa-grade">
         <div class="capa-texto">
           <p class="ola">Hello there, I'm</p>
           <h1 id="titulo-capa">Laura <span class="linha2">Alcantara</span></h1>
-          <p class="capa-frase">Real experiences turn into <em>real future guests</em>. I create videos and photos that feel like a chat with a friend and sell like an ad.</p>
+          <p class="capa-frase">Real experiences turn into <em>real future guests</em>.</p>
+          <p class="capa-sub">Bilingual UGC for hotels and brands, in English and Portuguese.</p>
           <div class="capa-botoes">
             <a class="botao botao-primario" href="#contato">Let's talk</a>
             <a class="botao botao-secundario" href="#destaques">See my work</a>
           </div>
           <p class="capa-aviso">
             <b>Now booking</b>
-            <span>Hotel stay collabs in Budapest, Prague and Vienna, March 2027. <a href="#hotel">See the collab</a></span>
+            <span>Budapest · Prague · Vienna, March 2027. <a href="#hotel">See the collab</a></span>
           </p>
         </div>
         <figure class="capa-foto revelar" style="margin:0">
@@ -532,17 +570,14 @@
         </figure>
         <div class="revelar">
           <div class="sobre-texto">
-            <p>Hi, I'm Laura! I live in Limeira, Brazil, and I spend my days turning products into stories people want to watch until the very end. I believe the best content is the kind that feels real, because it is real: real people using, feeling and sharing what they think.</p>
-            <p>I work with beauty, food, home decor and travel, and I have created content for hotels that wanted to show what it feels like to stay with them. I also work with brands of any kind, remotely or on location, and I film in English and Portuguese.</p>
-            <p>I film, edit and produce everything myself, with my own setup: phone, lighting, microphone and tripod. My approach is simple: I get to know your brand, write a script that sounds human and film every detail with care.</p>
-            <p>If you want content that brings your brand closer to people, we are going to get along really well.</p>
+            <p>Hi, I'm Laura! I turn products and places into short, honest videos people actually watch until the end. I script, film and edit everything myself, in English and Portuguese.</p>
           </div>
           <ul class="promessas">
-            <li><b>01</b> You approve the script before I film.</li>
-            <li><b>02</b> One round of revisions included in every delivery.</li>
-            <li><b>03</b> Delivery within 72 business hours.</li>
+            <li><b>01</b> Script approved before I film</li>
+            <li><b>02</b> One round of revisions</li>
+            <li><b>03</b> Delivery in 72 business hours</li>
           </ul>
-          <p class="assinatura">Laura Alcantara <small>UGC Creator · English and Portuguese</small></p>
+          <p class="assinatura">Laura Alcantara <small>UGC Creator · EN / PT</small></p>
         </div>
       </div>
     </div>
@@ -556,11 +591,9 @@
       <header class="porque-manchete revelar">
         <span class="chapeu">Why it works</span>
         <h2 id="titulo-porque">Real experiences turn into <em>real future guests.</em></h2>
-        <p>Travelers don't book because of a perfect brochure. They book because someone like them was there, loved it, and showed them what it actually feels like.</p>
       </header>
       <!-- the three cards come from the PORQUE array in the script -->
       <ul class="porque-grade" id="porque-grade"></ul>
-      <p class="citacao revelar">Your hotel told through a guest's eyes: honest, warm and ready to make the next traveler hit "book now".</p>
     </div>
   </section>
 
@@ -572,15 +605,14 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Hotel collab</span>
         <h2 id="titulo-hotel">Hotel <em>stay collab</em></h2>
-        <p class="linha-fina">Host me for a few nights and get content that makes people want to book.</p>
+        <p class="linha-fina">Host me for a few nights, get content that makes people book.</p>
       </header>
       <div class="hotel-grade">
         <div class="hotel-intro revelar">
-          <p>I'm traveling through Europe in March 2027 and I'd love to stay with you. In exchange for the stay, I create content that shows your hotel the way guests really live it: the arrival, the room, the little details and the moments that make people say "I want to be there".</p>
-          <p>Everything is planned with you beforehand, filmed with care during the stay and delivered ready to use.</p>
+          <p>I'm traveling through Europe in March 2027. I'll show your hotel the way guests really live it: the arrival, the room, the little details.</p>
           <div class="destaque-bilingue">
             <strong>Two audiences, one stay</strong>
-            All content comes in English and in Portuguese, so you reach international travelers and Brazilians traveling to Europe for the price of a single stay.
+            Every piece in English and Portuguese.
           </div>
         </div>
         <!-- the items in this box come from the HOTEL_TROCA array in the script -->
@@ -596,7 +628,7 @@
         </article>
       </div>
 
-      <h3 class="cidades-cabeca revelar">Postcards from my next trip, March 2027</h3>
+      <h3 class="cidades-cabeca revelar">Next stops, March 2027</h3>
       <!-- cities come from the CIDADES array in the script -->
       <ul class="cidades" id="cidades"></ul>
       <div class="hotel-cta">
@@ -613,8 +645,7 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Highlights</span>
         <h2 id="titulo-destaques">Recent <em>favourites</em></h2>
-        <p class="linha-fina">Tap a video to watch it on Instagram.</p>
-      </header>
+              </header>
       <!-- the cards are built from the DESTAQUES array in the script:
            the VIDEO LINK goes in the "link" field and the COVER goes in the "capa" field -->
       <div class="destaques-grade" id="destaques-grade"></div>
@@ -629,8 +660,7 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Portfolio</span>
         <h2 id="titulo-trabalhos">Work by niche</h2>
-        <p class="linha-fina">Pick a niche to see only its projects.</p>
-      </header>
+              </header>
       <div class="filtros" id="filtros" role="group" aria-label="Filter work by niche"></div>
       <div class="trabalhos-grade" id="trabalhos-grade" aria-live="polite"></div>
     </div>
@@ -644,24 +674,8 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Services</span>
         <h2 id="titulo-servicos">How I can help you</h2>
-        <p class="linha-fina">From script to delivery, everything is designed to help your brand sell naturally.</p>
-      </header>
+              </header>
       <div class="servicos-grade revelar" id="servicos-grade"></div>
-    </div>
-  </section>
-
-  <hr class="filete-duplo">
-
-  <!-- ============ 7. WHAT YOU GET ============ -->
-  <section id="entregas" aria-labelledby="titulo-entregas">
-    <div class="container">
-      <header class="secao-cabeca revelar">
-        <span class="chapeu">In every delivery</span>
-        <h2 id="titulo-entregas">What you get</h2>
-        <p class="linha-fina">For hotels and for brands of any kind.</p>
-      </header>
-      <!-- items come from the ENTREGAS array in the script -->
-      <ul class="entregas revelar" id="entregas-lista"></ul>
     </div>
   </section>
 
@@ -685,7 +699,7 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Say hello</span>
         <h2 id="titulo-contato">Let's create together?</h2>
-        <p class="linha-fina">Tell me about your brand or hotel and what you need. Hotels: let me know your city and the dates that work for you.</p>
+        <p class="linha-fina">Hotels: tell me your city and dates. Brands: tell me what you need.</p>
       </header>
       <div class="contato-grade">
         <div class="formulario revelar">
@@ -711,8 +725,7 @@
           </div>
         </div>
         <aside class="canais revelar" aria-label="Other ways to reach me">
-          <p>Prefer to talk directly? Choose a channel:</p>
-          <a class="canal" href="https://wa.me/5519983362423" target="_blank" rel="noopener"><span>WhatsApp</span><span>+55 19 98336-2423</span></a>
+                    <a class="canal" href="https://wa.me/5519983362423" target="_blank" rel="noopener"><span>WhatsApp</span><span>+55 19 98336-2423</span></a>
           <a class="canal" href="mailto:lauragalc@gmail.com"><span>Email</span><span>lauragalc@gmail.com</span></a>
           <a class="canal" href="https://www.instagram.com/eusoualau/" target="_blank" rel="noopener"><span>Instagram</span><span>@eusoualau</span></a>
         </aside>
@@ -744,7 +757,7 @@
     <div id="captura-conteudo">
       <span class="chapeu">Media kit</span>
       <h2 id="captura-titulo">Want my full media kit?</h2>
-      <p>Leave your name and email and I'll send you everything: formats, packages and hotel collab details.</p>
+      <p>Leave your email and I'll send formats and packages.</p>
       <form id="form-captura" novalidate>
         <div class="campo">
           <label for="k-nome">Name</label>
@@ -772,22 +785,19 @@ const HOTEL_TROCA = {
     "A 3 night stay for 2 people"
   ],
   recebe: [
-    "2 vertical 9:16 videos: a 15 second video to spark desire and a longer stay review",
-    "15 edited photos of the room, the common areas and the experience",
+    "2 vertical videos (15s hook + stay review)",
+    "15 edited photos",
     "Stories during the stay",
-    "A post on my Instagram @eusoualau tagging the hotel",
-    "All content in English and in Portuguese",
-    "Unlimited usage rights, no expiry date",
-    "Script aligned with you before the stay",
-    "Delivery within 72 business hours after check-out, with one round of revisions included"
+    "English and Portuguese versions",
+    "Unlimited usage rights"
   ]
 };
 
 // Why UGC works for hotels (the "Editorial" section)
 const PORQUE = [
-  { titulo: "People trust people", texto: "A real guest showing the room, the breakfast and the view feels like a friend's recommendation, not an ad. That trust is what turns a scroll into a booking." },
-  { titulo: "Seeing is booking", texto: "Short vertical videos let future guests picture themselves there: arriving, unpacking, waking up in your room. The more real it feels, the easier it is to say yes." },
-  { titulo: "Content that keeps working", texto: "Unlimited usage rights in English and Portuguese, ready for your website, social media, ads and booking listings, long after I check out." }
+  { titulo: "People trust people", texto: "A real guest feels like a friend's tip, not an ad." },
+  { titulo: "Seeing is booking", texto: "Future guests picture themselves in your room." },
+  { titulo: "Content that keeps working", texto: "Yours to use on your site, social and ads, forever." }
 ];
 
 // Where I'll be in March 2027
@@ -843,33 +853,20 @@ const TRABALHOS = [
 
 // Services (numbered automatically, in order)
 const SERVICOS = [
-  { titulo: "UGC video", descricao: "Vertical videos with script, filming and editing, ready for your brand's social channels." },
-  { titulo: "Ad cuts", descricao: "Short versions with a strong hook in the first seconds, made for paid traffic." },
-  { titulo: "Product photos", descricao: "Natural photos of the product in use, with beautiful light and a real life feel." },
-  { titulo: "Unboxing", descricao: "A genuine first impression: opening it, showing the details and sharing what I think." },
-  { titulo: "Post on my profile", descricao: "Besides delivering the content to you, I can also publish it on @eusoualau, speaking directly to my audience." },
-  { titulo: "Monthly package", descricao: "Fresh content every month, so your brand never runs out of news." }
+  { titulo: "UGC videos", descricao: "Vertical videos, scripted, filmed and edited." },
+  { titulo: "Ad cuts", descricao: "Short versions with a strong hook for paid ads." },
+  { titulo: "Photos", descricao: "Natural, real-life photos of your product or place." },
+  { titulo: "Monthly package", descricao: "Fresh content every month." }
 ];
 const PRECO_SERVICOS = "Rates on request";
 
-// What you get (any brand)
-const ENTREGAS = [
-  "Vertical 9:16 videos, filmed and edited by me",
-  "Short 15 second videos made to spark interest, and longer explainer videos when the brand needs more detail",
-  "Content in English and Portuguese",
-  "Photos included depending on the package",
-  "Script approved before filming",
-  "One round of revisions included",
-  "Delivery within 72 business hours",
-  "Unlimited usage rights"
-];
 
 // How I work
 const PASSOS = [
-  { titulo: "Brief", texto: "You tell me about your brand, your goal and what you need." },
-  { titulo: "Script", texto: "I write the script and you approve it before anything is filmed." },
-  { titulo: "Filming", texto: "I film and edit everything myself, in English and Portuguese." },
-  { titulo: "Delivery and revision", texto: "You get the content within 72 business hours, with one round of revisions." }
+  { titulo: "Brief", texto: "You tell me what you need." },
+  { titulo: "Script", texto: "You approve it before I film." },
+  { titulo: "Film & edit", texto: "In English and Portuguese." },
+  { titulo: "Delivery", texto: "In 72 business hours, one revision included." }
 ];
 
 /* =====================================================================
@@ -958,7 +955,6 @@ $("#servicos-grade").innerHTML = SERVICOS.map((s, i) => `
   </article>`).join("");
 
 // What you get + How I work
-$("#entregas-lista").innerHTML = lista(ENTREGAS);
 $("#passos").innerHTML = PASSOS.map((p, i) => `
   <li class="passo">
     <span class="passo-num">${i + 1}</span>
