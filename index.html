@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Laura Alcantara · UGC Creator Portfolio</title>
-<meta name="description" content="Laura Alcantara, bilingual UGC creator. Real experiences turn into real future guests. Hotel stay collabs in Europe, March 2027, and UGC videos in English and Portuguese for brands of any kind.">
+<meta name="description" content="Laura Alcantara, bilingual UGC creator. Real experiences turn into real future guests. Stay collabs with hotels and guesthouses in Europe, March 2027, and UGC videos in English and Portuguese for brands of any kind.">
 <link rel="alternate" hreflang="pt-BR" href="https://lauragalc.github.io/lauragalcugc/">
 <link rel="alternate" hreflang="en" href="https://lauragalc.github.io/lauragalcugc-en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -477,6 +477,11 @@
     .servicos-grade { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) { .servicos-grade { grid-template-columns: 1fr; } .sobre-texto { font-size: 17px; } }
+
+  /* what future guests will see */
+  .hotel-intro .hotel-oferece { font-size: 18px; padding: 20px 24px; background: #F6E8E1; border-radius: 16px; margin: 22px 0; }
+  .hotel-intro .hotel-oferece em { color: #9A5743; }
+  .cidade-noites { font-family: var(--serif); font-style: normal; font-size: 20px; color: #9A5743; }
 </style>
 </head>
 <body>
@@ -501,7 +506,7 @@
       <ul class="menu" id="menu-principal">
         <li><a href="#sobre">About</a></li>
         <li><a href="#porque">Why UGC</a></li>
-        <li><a href="#hotel">Hotel collab</a></li>
+        <li><a href="#hotel">Stay collab</a></li>
         <li><a href="#destaques">Highlights</a></li>
         <li><a href="#trabalhos">Work</a></li>
         <li><a href="#servicos">Services</a></li>
@@ -528,14 +533,14 @@
           <p class="ola">Hello there, I'm</p>
           <h1 id="titulo-capa">Laura <span class="linha2">Alcantara</span></h1>
           <p class="capa-frase">Real experiences turn into <em>real future guests</em>.</p>
-          <p class="capa-sub">Bilingual UGC for hotels and brands, in English and Portuguese.</p>
+          <p class="capa-sub">Bilingual UGC for hotels, guesthouses and brands, in English and Portuguese.</p>
           <div class="capa-botoes">
             <a class="botao botao-primario" href="#contato">Let's talk</a>
             <a class="botao botao-secundario" href="#destaques">See my work</a>
           </div>
           <p class="capa-aviso">
             <b>Now booking</b>
-            <span>Budapest · Prague · Vienna, March 2027. <a href="#hotel">See the collab</a></span>
+            <span>Budapest · Vienna · Prague, March 8 – 20, 2027. <a href="#hotel">See the collab</a></span>
           </p>
         </div>
         <figure class="capa-foto revelar" style="margin:0">
@@ -603,13 +608,14 @@
   <section class="hotel" id="hotel" aria-labelledby="titulo-hotel">
     <div class="container">
       <header class="secao-cabeca revelar">
-        <span class="chapeu">Hotel collab</span>
-        <h2 id="titulo-hotel">Hotel <em>stay collab</em></h2>
+        <span class="chapeu">Hotels &amp; guesthouses</span>
+        <h2 id="titulo-hotel">The <em>stay collab</em></h2>
         <p class="linha-fina">Host me for a few nights, get content that makes people book.</p>
       </header>
       <div class="hotel-grade">
         <div class="hotel-intro revelar">
-          <p>I'm traveling through Europe in March 2027. I'll show your hotel the way guests really live it: the arrival, the room, the little details.</p>
+          <p>I'm traveling through Europe in March 2027. I'll show your place the way guests really live it: the arrival, the room, the little details.</p>
+          <p class="hotel-oferece">Future guests will know everything you have to offer: <em>breakfast, room service, the pool, the view, the cozy corners</em> that make your place special.</p>
           <div class="destaque-bilingue">
             <strong>Two audiences, one stay</strong>
             Every piece in English and Portuguese.
@@ -632,7 +638,7 @@
       <!-- cities come from the CIDADES array in the script -->
       <ul class="cidades" id="cidades"></ul>
       <div class="hotel-cta">
-        <a class="botao botao-primario" href="#contato" id="convite-hotel">Invite me to your hotel</a>
+        <a class="botao botao-primario" href="#contato" id="convite-hotel">Invite me to your place</a>
       </div>
     </div>
   </section>
@@ -699,7 +705,7 @@
       <header class="secao-cabeca revelar">
         <span class="chapeu">Say hello</span>
         <h2 id="titulo-contato">Let's create together?</h2>
-        <p class="linha-fina">Hotels: tell me your city and dates. Brands: tell me what you need.</p>
+        <p class="linha-fina">Hotels &amp; guesthouses: tell me your city. Brands: tell me what you need.</p>
       </header>
       <div class="contato-grade">
         <div class="formulario revelar">
@@ -779,15 +785,14 @@
    PORTFOLIO DATA: edit only here, no need to touch the HTML.
    ===================================================================== */
 
-// Hotel stay collab: what the hotel offers and what it gets
+// Stay collab (hotels and guesthouses): what the property offers and what it gets
 const HOTEL_TROCA = {
   oferta: [
-    "A 3 night stay for 2 people"
+    "A stay for 2 people on my dates in your city"
   ],
   recebe: [
-    "2 vertical videos (15s hook + stay review)",
-    "15 edited photos",
-    "Stories during the stay",
+    "4 vertical videos: 3 short + 1 long",
+    "The whole stay, start to finish: arriving, enjoying, checking out",
     "English and Portuguese versions",
     "Unlimited usage rights"
   ]
@@ -802,9 +807,9 @@ const PORQUE = [
 
 // Where I'll be in March 2027
 const CIDADES = [
-  { cidade: "Budapest", noites: "3 nights" },
-  { cidade: "Prague", noites: "3 nights" },
-  { cidade: "Vienna", noites: "3 nights" }
+  { cidade: "Budapest", noites: "March 8 – 12" },
+  { cidade: "Vienna", noites: "March 12 – 16" },
+  { cidade: "Prague", noites: "March 16 – 20" }
 ];
 
 // Featured content.
@@ -847,8 +852,8 @@ const TRABALHOS = [
   { nicho: "Food", titulo: "Honest taste test", marca: "Brand 04", formato: "Product photos", imagem: "" },
   { nicho: "Home decor", titulo: "Corner makeover", marca: "Brand 05", formato: "UGC video 9:16", imagem: "" },
   { nicho: "Home decor", titulo: "Home decor unboxing", marca: "Brand 06", formato: "Unboxing", imagem: "" },
-  { nicho: "Travel", titulo: "Hotel room tour", marca: "Hotels", formato: "UGC video 9:16", imagem: "" },
-  { nicho: "Travel", titulo: "A day at the hotel", marca: "Hotels", formato: "Post on my profile", imagem: "" }
+  { nicho: "Travel", titulo: "Room tour", marca: "Stays", formato: "UGC video 9:16", imagem: "" },
+  { nicho: "Travel", titulo: "A day at the stay", marca: "Stays", formato: "Post on my profile", imagem: "" }
 ];
 
 // Services (numbered automatically, in order)
@@ -897,9 +902,9 @@ $("#porque-grade").innerHTML = PORQUE.map((p, i) => `
 // Hotel collab
 $("#hotel-oferta").innerHTML = lista(HOTEL_TROCA.oferta);
 $("#hotel-recebe").innerHTML = lista(HOTEL_TROCA.recebe);
-$("#cidades").innerHTML = CIDADES.map((c) => `
+$("#cidades").innerHTML = CIDADES.map((c, i) => `
   <li class="cidade revelar">
-    <span class="cidade-mes">March 2027</span>
+    <span class="cidade-mes">Stop ${i + 1} · 2027</span>
     <h3>${esc(c.cidade)}</h3>
     <span class="cidade-noites">${esc(c.noites)}</span>
   </li>`).join("");
