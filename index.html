@@ -340,6 +340,106 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .revelar { opacity: 1; translate: none; }
   }
+
+  /* ============ IDENTITY COLOURS ============
+     Sage, blush, butter and clay live in backgrounds, cards and details.
+     Photo and video slots stay neutral so the content brings its own colour. */
+  :root {
+    --sal: #A8BBA3;  --sal-escura: #4E6B57; --sal-escurissima: #3F5847; --sal-lavada: #E4ECE1;
+    --blush: #E9C9BC; --blush-lavado: #F6E8E1;
+    --butter: #EFDFB3; --butter-lavado: #FAF2DC;
+    --argila: #B8705A; --argila-escura: #9A5743;
+    --papel: #FAF6EF; --tinta: #2E2A26; --tinta-suave: #6B635A;
+  }
+  h1 em, h2 em { color: var(--sal-escura); }
+  .marca-nome em, .capa h1 .linha2 { color: var(--sal-escura); }
+  .topo-edicao span:last-child { color: var(--sal-escura); }
+  .menu a:hover { background: var(--sal-lavada); }
+  .chapeu { color: var(--argila-escura); }
+
+  /* buttons: sage-deep is the one clickable colour */
+  .botao-primario { background: var(--sal-escura); color: var(--papel); }
+  .botao-primario:hover { background: var(--sal-escurissima); }
+  .botao-secundario { border-color: var(--sal); }
+  .botao-secundario:hover { background: var(--sal-lavada); border-color: var(--sal-escura); }
+  .filtro[aria-pressed="true"] { background: var(--sal-escura); border-color: var(--sal-escura); }
+
+  /* cover */
+  .capa { background: linear-gradient(var(--papel), var(--papel)); }
+  .capa-manchete-topo .exclusivo { background: var(--sal-lavada); border-color: var(--sal); color: var(--sal-escurissima); }
+  .capa-manchete-topo .exclusivo::before { background: var(--sal-escura); }
+  .capa-aviso { background: var(--butter); border-color: var(--butter); }
+  .capa-aviso b { color: var(--tinta); }
+  .capa-aviso b::before { background: var(--argila); }
+  .capa-aviso a { color: var(--sal-escurissima); }
+
+  /* about on a blush wash */
+  #sobre { background: var(--blush-lavado); }
+  .promessas li b, .sobre-texto p:first-child::first-letter { color: var(--argila); }
+
+  /* why UGC: the three ideas in full sage, blush and butter */
+  .porque-grade { gap: 20px; border: 0; }
+  .porque-item { border-radius: 16px; padding: 34px 30px; }
+  .porque-item + .porque-item { border: 0; }
+  .porque-item:nth-child(1) { background: var(--sal); }
+  .porque-item:nth-child(2) { background: var(--blush); }
+  .porque-item:nth-child(3) { background: var(--butter); }
+  .porque-num { color: var(--tinta); opacity: .75; }
+  .porque-item p { color: var(--tinta); }
+
+  /* hotel collab on a sage wash */
+  .hotel { background: var(--sal-lavada); }
+  .hotel-intro .destaque-bilingue { background: var(--butter); }
+  .hotel-intro .destaque-bilingue strong { color: var(--tinta); }
+  .proposta h4 { color: var(--sal-escura); }
+  .proposta li::before { color: var(--argila); }
+  .cidade { border-top: 8px solid var(--sal); }
+  .cidade:nth-child(2) { border-top-color: var(--blush); }
+  .cidade:nth-child(3) { border-top-color: var(--butter); }
+  .cidade::after { background: var(--blush-lavado); border-color: var(--argila); }
+  .cidade:nth-child(2)::after { background: var(--sal-lavada); border-color: var(--sal-escura); }
+  .cidade:nth-child(3)::after { background: var(--blush); }
+  .cidade-noites { color: var(--sal-escura); }
+
+  /* highlights: neutral slots, play button in sage */
+  .play { background: var(--sal-escura); }
+  .play::after { border-left-color: var(--papel); }
+  .destaque-tipo { color: var(--sal-escura); }
+
+  /* work on a butter wash */
+  #trabalhos { background: var(--butter-lavado); }
+  .trabalho-nicho { color: var(--sal-escura); }
+
+  /* services: each card with its own soft colour */
+  .servico { border: 0; }
+  .servico:nth-child(3n+1) { background: var(--sal-lavada); }
+  .servico:nth-child(3n+2) { background: var(--blush-lavado); }
+  .servico:nth-child(3n+3) { background: var(--butter-lavado); }
+  .servico-preco { background: var(--papel); padding: 5px 12px; border-radius: 999px; color: var(--tinta); }
+  .entregas li::before { background: var(--sal); color: var(--tinta); }
+
+  /* how I work: full sage with cream cards */
+  .como-trabalho { background: var(--sal); color: var(--tinta); }
+  .como-trabalho .chapeu { color: var(--tinta); }
+  .como-trabalho .secao-cabeca h2 { color: var(--tinta); }
+  .passos { gap: 16px; }
+  .passo, .passo + .passo { background: var(--papel); border: 0 !important; border-radius: 16px; padding: 26px 24px !important; }
+  .passo-num { color: var(--argila); }
+  .passo h3 { color: var(--tinta); }
+  .passo p { color: var(--tinta-suave); }
+  .como-trabalho :focus-visible { outline-color: var(--tinta); }
+
+  /* contact on a blush wash */
+  #contato { background: var(--blush-lavado); }
+  .formulario { box-shadow: none; }
+  .canal:hover span:first-child { color: var(--sal-escura); }
+  .confirmacao { background: var(--sal-lavada); }
+
+  /* footer in sage-deep */
+  .rodape { background: var(--sal-escura); color: var(--papel); border: 0; }
+  .rodape small { color: #DDE6D8; }
+  .rodape-redes a:hover { color: var(--butter); }
+  .rodape :focus-visible { outline-color: var(--butter); }
 </style>
 </head>
 <body>
