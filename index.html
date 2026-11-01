@@ -482,6 +482,18 @@
   .hotel-intro .hotel-oferece { font-size: 18px; padding: 20px 24px; background: #F6E8E1; border-radius: 16px; margin: 22px 0; }
   .hotel-intro .hotel-oferece em { color: #9A5743; }
   .cidade-noites { font-family: var(--serif); font-style: normal; font-size: 20px; color: #9A5743; }
+  /* ============ SNAPSHOTS (small photo strip) ============ */
+  #fotos { padding-top: 24px; }
+  .fotos-grade { list-style: none; margin: 0 auto; padding: 0; max-width: 960px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .foto-polaroid { background: var(--branco); padding: 10px 10px 0; border-radius: 6px; box-shadow: var(--sombra); transition: transform .25s; }
+  .foto-polaroid:nth-child(odd) { transform: rotate(-1.2deg); }
+  .foto-polaroid:nth-child(even) { transform: rotate(1deg); }
+  .foto-polaroid:hover { transform: rotate(0) translateY(-3px); }
+  .foto-polaroid .foto { border-radius: 3px; }
+  .foto-polaroid p { margin: 0; padding: 10px 4px 12px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.4; color: var(--tinta-suave); }
+  .foto-polaroid p:empty { padding: 5px 0; }
+  .fotos-grade .foto-polaroid:nth-child(n+5) { margin-top: 4px; }
+  @media (max-width: 880px) { .fotos-grade { grid-template-columns: repeat(2, 1fr); max-width: 480px; gap: 18px; } }
 </style>
 </head>
 <body>
@@ -655,6 +667,20 @@
       <!-- the cards are built from the DESTAQUES array in the script:
            the VIDEO LINK goes in the "link" field and the COVER goes in the "capa" field -->
       <div class="destaques-grade" id="destaques-grade"></div>
+    </div>
+  </section>
+
+  <hr class="filete-duplo">
+
+  <!-- ============ SNAPSHOTS ============ -->
+  <section id="fotos" aria-labelledby="titulo-fotos">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <span class="chapeu">Snapshots</span>
+        <h2 id="titulo-fotos">A few <em>moments</em></h2>
+      </header>
+      <!-- photos come from the FOTOS array in the script -->
+      <ul class="fotos-grade revelar" id="fotos-grade"></ul>
     </div>
   </section>
 
@@ -840,6 +866,20 @@ const DESTAQUES = [
   }
 ];
 
+// Snapshots: a small photo strip (4 per row on desktop, 2 on phones).
+// "arquivo": photo path (e.g. "photo-1.jpg"). Empty shows the neutral block.
+// "legenda": short caption under the photo (can be empty "").
+const FOTOS = [
+  { arquivo: "photo-1.jpg", legenda: "", alt: "A-frame cabin suite with towel swans on the bed and a glass door to the woods" },
+  { arquivo: "photo-2.jpg", legenda: "", alt: "Cozy bedroom with stone walls, warm lamps and a sheepskin armchair" },
+  { arquivo: "photo-3.jpg", legenda: "", alt: "Bathtub tray with red and white wine and a candle" },
+  { arquivo: "photo-4.jpg", legenda: "", alt: "Stone wall corner with a warm reading lamp and white pillows" },
+  { arquivo: "photo-5.jpg", legenda: "", alt: "Sashimi platter on ice with salmon, tuna and octopus" },
+  { arquivo: "photo-6.jpg", legenda: "", alt: "Chocolate lava cake with vanilla ice cream" },
+  { arquivo: "photo-7.jpg", legenda: "", alt: "Torched salmon sushi on a blue ceramic plate" },
+  { arquivo: "photo-8.jpg", legenda: "", alt: "Table full of small jars of homemade jams" }
+];
+
 // Filter niches (the first "All" button is created automatically)
 const NICHOS = ["Beauty", "Food", "Home decor", "Travel"];
 
@@ -918,6 +958,13 @@ $("#destaques-grade").innerHTML = DESTAQUES.map((d) => `
     <h3>${esc(d.titulo)}</h3>
     <p>${esc(d.contexto)}</p>
   </a>`).join("");
+
+// Snapshots
+$("#fotos-grade").innerHTML = FOTOS.map((f) => `
+  <li class="foto-polaroid">
+    ${blocoFoto(f.arquivo, "r-4x5", "photo 4:5", f.alt)}
+    <p>${esc(f.legenda)}</p>
+  </li>`).join("");
 
 // Work + filters
 const filtrosEl = $("#filtros");
