@@ -195,6 +195,10 @@
   .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent var(--cacau); margin-left: 4px; }
   .destaque .foto-legenda-formato { top: auto; bottom: 18px; transform: translateX(-50%); }
   .destaque .foto-legenda-formato::before { display: none; }
+  .video-caixa video { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--linho); }
+  .video-caixa .play { border: 0; cursor: pointer; padding: 0; }
+  .video-caixa .play[hidden] { display: none; }
+  .video-caixa:hover .play { transform: translate(-50%, -50%) scale(1.06); }
   .destaque-tipo { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--argila-escura); margin-bottom: 6px; }
   .destaque h3 { font-size: 22px; margin-bottom: 6px; }
   .destaque p { color: var(--tinta-suave); font-size: 15px; margin: 0; }
@@ -836,20 +840,23 @@ const CIDADES = [
 ];
 
 // Featured content.
+// "video": video file played right on the page (no views or likes shown). If empty, the card links to "link".
 // "link": paste the VIDEO LINK here (Reels, TikTok, YouTube...).
 // "capa": path to the vertical 9:16 COVER (e.g. "cover-1.jpg"). Empty shows the gradient block.
 // "tipo": what the video shows (no view counts).
 const DESTAQUES = [
   {
     link: "https://www.instagram.com/reel/DfNdnGkKS_c/",
-    capa: "",
+    video: "video-bruges.mp4",
+    capa: "capa-bruges.jpg",
     tipo: "Travel moments",
     titulo: "Moments in Bruges",
     contexto: "A stroll through the city and the food along the way."
   },
   {
     link: "https://www.instagram.com/reel/CpTZyjFvDrI/",
-    capa: "",
+    video: "video-estadia-curta.mp4",
+    capa: "capa-estadia-curta.jpg",
     tipo: "Short stay video",
     titulo: "A stay in moments",
     contexto: "Little moments, cozy corners and, most of all, the place being enjoyed."
@@ -947,7 +954,16 @@ $("#cidades").innerHTML = CIDADES.map((c, i) => `
   </li>`).join("");
 
 // Highlights
-$("#destaques-grade").innerHTML = DESTAQUES.map((d) => `
+$("#destaques-grade").innerHTML = DESTAQUES.map((d) => d.video ? `
+  <article class="destaque revelar">
+    <div class="foto r-9x16 video-caixa">
+      <video src="${esc(d.video)}" poster="${esc(d.capa)}" preload="none" playsinline aria-label="${esc(d.titulo)}"></video>
+      <button class="play" type="button" aria-label="Play: ${esc(d.titulo)}"></button>
+    </div>
+    <span class="destaque-tipo">${esc(d.tipo)}</span>
+    <h3>${esc(d.titulo)}</h3>
+    <p>${esc(d.contexto)}</p>
+  </article>` : `
   <a class="destaque revelar" href="${esc(d.link)}" ${d.link !== "#" ? 'target="_blank" rel="noopener"' : ""}
      aria-label="Watch: ${esc(d.titulo)}, ${esc(d.tipo)}">
     ${blocoFoto(d.capa, "r-9x16", "video cover 9:16", "Video cover for " + d.titulo, '<span class="play" aria-hidden="true"></span>')}
@@ -955,6 +971,19 @@ $("#destaques-grade").innerHTML = DESTAQUES.map((d) => `
     <h3>${esc(d.titulo)}</h3>
     <p>${esc(d.contexto)}</p>
   </a>`).join("");
+
+// videos play right on the page; only one plays at a time
+document.querySelectorAll(".video-caixa").forEach((caixa) => {
+  const v = caixa.querySelector("video"), b = caixa.querySelector(".play");
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".video-caixa video").forEach((o) => { if (o !== v) o.pause(); });
+    v.controls = true; b.hidden = true; v.play();
+  });
+  v.addEventListener("play", () => {
+    b.hidden = true;
+    document.querySelectorAll(".video-caixa video").forEach((o) => { if (o !== v) o.pause(); });
+  });
+});
 
 // Snapshots
 $("#fotos-grade").innerHTML = FOTOS.map((f) => `
